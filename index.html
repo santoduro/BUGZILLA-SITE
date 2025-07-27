@@ -13,7 +13,7 @@
         // ===============================================================================================
         // !! IMPORTANTE !! INCOLLA LA TUA VERA API KEY DI HELIUS QUI SOTTO !!
         // ===============================================================================================
-        window.HELIUS_API_KEY = "0653e5bf-5b9b-44d8-a361-4411fbdda32b";
+        window.HELIUS_API_KEY = "LA_TUA_API_KEY_QUI";
     </script>
     <style>
         @keyframes background-pan {
@@ -169,12 +169,13 @@
                 </p>
 
                 <!-- Griglia di Minting con Immagini -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
-                    <!-- Card di Minting con Immagine -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                    <!-- Card di Minting con Immagine e Descrizione -->
                     <div class="bg-zinc-800/50 rounded-xl border border-zinc-700 flex flex-col text-center overflow-hidden">
                         <img src="/assets/casella1.png" alt="Random NFT" class="w-full h-40 object-cover">
                         <div class="p-4 flex flex-col flex-grow">
                             <h4 class="text-xl font-bold text-white">Random</h4>
+                            <p class="text-sm text-gray-400 flex-grow my-2">A chance to pull any rarity. High risk, high reward.</p>
                             <p class="text-3xl font-bold text-green-400 my-2">$10</p>
                             <button class="buy-nft-btn w-full mt-auto bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded-lg" data-rarity="Random" data-price="10">BUY NFT</button>
                         </div>
@@ -183,6 +184,7 @@
                         <img src="/assets/casella2.png" alt="Common NFT" class="w-full h-40 object-cover">
                         <div class="p-4 flex flex-col flex-grow">
                             <h4 class="text-xl font-bold text-white">Common</h4>
+                            <p class="text-sm text-gray-400 flex-grow my-2">The backbone of the swarm. A solid asset for any player.</p>
                             <p class="text-3xl font-bold text-green-400 my-2">$15</p>
                             <button class="buy-nft-btn w-full mt-auto bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded-lg" data-rarity="Common" data-price="15">BUY NFT</button>
                         </div>
@@ -191,6 +193,7 @@
                         <img src="/assets/casella3.png" alt="Epic NFT" class="w-full h-40 object-cover">
                         <div class="p-4 flex flex-col flex-grow">
                             <h4 class="text-xl font-bold text-blue-400">Epic</h4>
+                            <p class="text-sm text-gray-400 flex-grow my-2">A superior bug with enhanced abilities. A true threat on the battlefield.</p>
                             <p class="text-3xl font-bold text-green-400 my-2">$25</p>
                             <button class="buy-nft-btn w-full mt-auto bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded-lg" data-rarity="Epic" data-price="25">BUY NFT</button>
                         </div>
@@ -199,22 +202,28 @@
                         <img src="/assets/casella4.png" alt="Legendary NFT" class="w-full h-40 object-cover">
                         <div class="p-4 flex flex-col flex-grow">
                             <h4 class="text-xl font-bold text-purple-400">Legendary</h4>
+                            <p class="text-sm text-gray-400 flex-grow my-2">A mythical creature of immense power. Few will ever own one.</p>
                             <p class="text-3xl font-bold text-green-400 my-2">$50</p>
                             <button class="buy-nft-btn w-full mt-auto bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded-lg" data-rarity="Legendary" data-price="50">BUY NFT</button>
                         </div>
                     </div>
-                    <div class="bg-zinc-800/50 rounded-xl border-2 border-yellow-400 flex flex-col text-center overflow-hidden shadow-lg shadow-yellow-500/20">
-                        <img src="/assets/casella5.png" alt="$BUGGER NFT" class="w-full h-40 object-cover">
-                        <div class="p-4 flex flex-col flex-grow">
-                            <h4 class="text-xl font-bold text-yellow-400">$BUGGER</h4>
-                            <p class="text-3xl font-bold text-green-400 my-2">$100</p>
-                            <button class="buy-nft-btn w-full mt-auto bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 rounded-lg" data-rarity="$BUGGER" data-price="100">BUY NFT</button>
+                </div>
+                
+                <!-- Card $BUGGER in evidenza -->
+                <div class="w-full max-w-2xl mx-auto">
+                    <div class="bg-zinc-800/50 rounded-xl border-2 border-yellow-400 flex flex-col md:flex-row text-center md:text-left overflow-hidden shadow-lg shadow-yellow-500/20">
+                        <img src="/assets/casella5.png" alt="$BUGGER NFT" class="w-full md:w-64 h-auto object-cover">
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h4 class="text-3xl font-bold text-yellow-400">$BUGGER</h4>
+                            <p class="text-md text-gray-300 flex-grow my-3">The ultimate life form. The apex predator of the Bugzilla ecosystem. This is not just an NFT, it's a statement.</p>
+                            <p class="text-4xl font-bold text-green-400 my-2">$100</p>
+                            <button class="buy-nft-btn w-full mt-auto bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 rounded-lg" data-rarity="$BUGGER" data-price="100">BUY THE APEX</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Marketplace Generale con Creazione -->
-                <div class="flex justify-between items-center mb-6 border-t border-zinc-700 pt-10">
+                <div class="flex justify-between items-center mb-6 border-t border-zinc-700 pt-10 mt-12">
                     <h4 class="text-2xl font-bold text-white">Community Creations</h4>
                     <button id="create-nft-button" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg shadow-md hover:scale-105 transition-all">
                         Create your NFT
