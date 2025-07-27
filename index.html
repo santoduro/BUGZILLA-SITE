@@ -47,7 +47,7 @@
         .ticker-move {
             display: inline-block;
             white-space: nowrap;
-            animation: ticker-scroll 20s linear infinite;
+            animation: ticker-scroll 40s linear infinite;
         }
     </style>
 </head>
@@ -86,12 +86,10 @@
             </div>
         </header>
 
-        <!-- TICKER BANNER -->
+        <!-- TICKER BANNER DINAMICO -->
         <div class="bg-yellow-400 text-black py-2 ticker-wrap">
-            <div class="ticker-move">
-                <span class="font-bold mx-8">🔥 Live on <a href="https://pump.fun" target="_blank" class="underline">Pump.fun</a> before it explodes 🔥</span>
-                <span class="font-bold mx-8">🔥 Live on <a href="https://pump.fun" target="_blank" class="underline">Pump.fun</a> before it explodes 🔥</span>
-                <span class="font-bold mx-8">🔥 Live on <a href="https://pump.fun" target="_blank" class="underline">Pump.fun</a> before it explodes 🔥</span>
+            <div id="ticker-content" class="ticker-move">
+                <!-- Il contenuto verrà generato dinamicamente dallo script -->
             </div>
         </div>
 
@@ -107,23 +105,25 @@
             </div>
         </section>
 
-        <!-- SEZIONE WHERE TO BUY (RIPRISTINATA) -->
-        <section class="px-6 max-w-7xl mx-auto py-16 text-center bg-black">
-            <h2 class="text-5xl font-bold text-white mb-12 tracking-wide">Where to Buy</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <!-- Card Pump.fun -->
-                <div class="bg-zinc-900/70 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-white/10 flex flex-col items-center text-center">
-                    <img src="/assets/pump-logo.png" alt="Pump.fun Logo" class="w-24 h-24 mb-4">
-                    <h3 class="text-3xl font-bold text-white mb-2">Pump.fun</h3>
-                    <p class="text-gray-400 mb-6 flex-grow">Get in early. Be part of the initial swarm before the Raydium launch.</p>
-                    <a href="https://pump.fun/" target="_blank" rel="noopener noreferrer" class="w-full bg-white text-black font-bold py-3 px-8 rounded-lg hover:bg-gray-200 transition-colors">BUY NOW</a>
-                </div>
-                <!-- Card Raydium -->
-                <div class="bg-zinc-900/70 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-white/10 flex flex-col items-center text-center">
-                    <svg class="w-24 h-24 mb-4" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32 0L39.36 10.72L51.68 12.96L43.28 22.48L44.48 35.36L32 30.24L19.52 35.36L20.72 22.48L12.32 12.96L24.64 10.72L32 0Z" fill="#3B82F6"></path><path d="M32 64L39.36 53.28L51.68 51.04L43.28 41.52L44.48 28.64L32 33.76L19.52 28.64L20.72 41.52L12.32 51.04L24.64 53.28L32 64Z" fill="#60A5FA"></path></svg>
-                    <h3 class="text-3xl font-bold text-white mb-2">Raydium</h3>
-                    <p class="text-gray-400 mb-6 flex-grow">Trade $BUGZILLA on Solana's leading DEX with deep liquidity.</p>
-                    <a href="https://raydium.io/" target="_blank" rel="noopener noreferrer" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-colors">TRADE NOW</a>
+        <!-- SEZIONE WHERE TO BUY -->
+        <section class="relative px-6 max-w-7xl mx-auto py-16 text-center">
+            <img src="/assets/bugzilla6.png" alt="Buy Background" class="absolute inset-0 w-full h-full object-cover opacity-10 z-0">
+            <div class="absolute inset-0 w-full h-full bg-black/50 z-0"></div>
+            <div class="relative z-10">
+                <h2 class="text-5xl font-extrabold mb-12 tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-yellow-400">BUY $BUGZILLA ON</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div class="bg-zinc-900/70 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-white/10 flex flex-col items-center text-center">
+                        <img src="/assets/pump-logo.png" alt="Pump.fun Logo" class="w-24 h-24 mb-4">
+                        <h3 class="text-3xl font-bold text-white mb-2">Pump.fun</h3>
+                        <p class="text-gray-400 mb-6 flex-grow">Get in early. Be part of the initial swarm before the Raydium launch.</p>
+                        <a href="https://pump.fun/" target="_blank" rel="noopener noreferrer" class="w-full bg-white text-black font-bold py-3 px-8 rounded-lg hover:bg-gray-200 transition-colors">BUY NOW</a>
+                    </div>
+                    <div class="bg-zinc-900/70 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-white/10 flex flex-col items-center text-center">
+                        <svg class="w-24 h-24 mb-4" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32 0L39.36 10.72L51.68 12.96L43.28 22.48L44.48 35.36L32 30.24L19.52 35.36L20.72 22.48L12.32 12.96L24.64 10.72L32 0Z" fill="#3B82F6"></path><path d="M32 64L39.36 53.28L51.68 51.04L43.28 41.52L44.48 28.64L32 33.76L19.52 28.64L20.72 41.52L12.32 51.04L24.64 53.28L32 64Z" fill="#60A5FA"></path></svg>
+                        <h3 class="text-3xl font-bold text-white mb-2">Raydium</h3>
+                        <p class="text-gray-400 mb-6 flex-grow">Trade $BUGZILLA on Solana's leading DEX with deep liquidity.</p>
+                        <a href="https://raydium.io/" target="_blank" rel="noopener noreferrer" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-colors">TRADE NOW</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -145,7 +145,7 @@
             </div>
         </section>
 
-        <!-- SEZIONE TOKENOMICS -->
+        <!-- SEZIONE TOKENOMICS (SFONDO NITIDO) -->
         <section class="px-6 max-w-7xl mx-auto py-16">
           <div class="bg-zinc-900/70 backdrop-blur-sm p-8 md:p-10 rounded-2xl shadow-2xl border border-white/10 relative overflow-hidden">
             <img src="/assets/bugzilla4.png" alt="Tokenomics Background" class="absolute top-0 left-0 w-full h-full object-cover opacity-10 z-0">
