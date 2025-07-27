@@ -13,7 +13,7 @@
         // ===============================================================================================
         // !! IMPORTANTE !! INCOLLA LA TUA VERA API KEY DI HELIUS QUI SOTTO !!
         // ===============================================================================================
-        window.HELIUS_API_KEY = "LA_TUA_API_KEY_QUI";
+        window.HELIUS_API_KEY = "0653e5bf-5b9b-44d8-a361-4411fbdda32b";
     </script>
     <style>
         @keyframes background-pan {
@@ -35,12 +35,26 @@
             background-image: linear-gradient(110deg, rgba(31, 0, 92, 0.2), rgba(9, 9, 11, 0.5) 25%, rgba(9, 9, 11, 0.5) 75%, rgba(0, 27, 61, 0.2));
             animation: header-pan 15s linear infinite;
         }
+        /* Stile per il ticker banner */
+        @keyframes ticker-scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+        }
+        .ticker-move {
+            display: inline-block;
+            white-space: nowrap;
+            animation: ticker-scroll 20s linear infinite;
+        }
     </style>
 </head>
-<body class="bg-gradient-to-br from-black via-zinc-900 to-zinc-800 text-white font-sans">
+<body class="bg-black text-white font-sans">
 
     <main>
-        <!-- HEADER CON SFONDO DINAMICO -->
+        <!-- HEADER -->
         <header class="relative shadow-md sticky top-0 z-50 border-b border-zinc-800 header-animated-bg">
             <div class="relative z-10 flex justify-between items-center px-6 py-4">
                 <div class="flex items-center gap-3">
@@ -72,28 +86,28 @@
             </div>
         </header>
 
-        <section class="relative min-h-[80vh] flex items-center justify-center text-center overflow-hidden p-6">
-            <!-- Sfondo generale della sezione -->
-            <img src="/assets/bugzilla3.png" alt="Hero Background" class="absolute w-full h-full object-cover scale-150 blur-xl opacity-30" />
-            
-            <!-- La Carta, ora con il suo sfondo interno -->
-            <div class="relative z-10 w-full max-w-lg bg-zinc-900/70 backdrop-blur-sm rounded-2xl shadow-2xl border border-white/10 text-center overflow-hidden">
-                <!-- Immagine di sfondo della carta -->
-                <img src="/assets/bugzilla4.png" alt="Card Background" class="absolute top-0 left-0 w-full h-full object-cover opacity-20 blur-sm z-0">
-                
-                <!-- Contenuto della carta -->
-                <div class="relative z-10 p-8 md:p-12">
-                    <img src="/assets/bugzilla2.png" alt="Bugzilla Swarm" class="max-w-[250px] mx-auto rounded-xl shadow-lg shadow-purple-500/20 mb-8">
-                    <h2 class="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg mb-8">
-                        Conquer the Chaos
-                    </h2>
-                    <button id="hero-connect-button" class="bg-gradient-to-tr from-purple-600 to-pink-600 text-white text-xl font-bold py-4 px-10 rounded-full shadow-xl hover:scale-105 transition-all">
-                        <span>Connect Wallet</span>
-                    </button>
-                </div>
+        <!-- TICKER BANNER -->
+        <div class="bg-yellow-400 text-black py-2 ticker-wrap">
+            <div class="ticker-move">
+                <span class="font-bold mx-8">🔥 Live on <a href="https://pump.fun" target="_blank" class="underline">Pump.fun</a> before it explodes 🔥</span>
+                <span class="font-bold mx-8">🔥 Live on <a href="https://pump.fun" target="_blank" class="underline">Pump.fun</a> before it explodes 🔥</span>
+                <span class="font-bold mx-8">🔥 Live on <a href="https://pump.fun" target="_blank" class="underline">Pump.fun</a> before it explodes 🔥</span>
+            </div>
+        </div>
+
+        <!-- SEZIONE HERO -->
+        <section class="relative min-h-screen flex flex-col items-center justify-center text-center p-6 bg-gradient-to-br from-orange-600 via-red-700 to-orange-600">
+            <div class="flex flex-col items-center gap-4 z-10">
+                <h2 class="text-8xl md:text-9xl font-black text-white tracking-wider drop-shadow-lg" style="font-family: Impact, sans-serif;">BUGZILLA</h2>
+                <img src="/assets/bugzilla2.png" alt="Bugzilla" class="w-64 h-auto rounded-2xl shadow-2xl border-4 border-yellow-400 my-4">
+                <p class="text-2xl font-bold text-yellow-300 drop-shadow-md">The most viral meme-token on Solana</p>
+                <button id="hero-connect-button" class="mt-6 bg-green-600 hover:bg-green-700 text-white text-xl font-bold py-3 px-8 rounded-lg shadow-xl border-2 border-green-400 hover:scale-105 transition-all">
+                    <span>Connect Wallet</span>
+                </button>
             </div>
         </section>
 
+        <!-- SEZIONE CANVAS -->
         <section class="relative h-[550px] bg-black flex flex-col justify-center items-center overflow-hidden py-12">
             <div class="w-full max-w-5xl mx-auto flex flex-col items-center gap-8">
                 <canvas id="matrix-canvas" class="w-full h-[400px]"></canvas>
@@ -110,9 +124,10 @@
             </div>
         </section>
 
+        <!-- SEZIONE TOKENOMICS -->
         <section class="px-6 max-w-7xl mx-auto py-16">
           <div class="bg-zinc-900/70 backdrop-blur-sm p-8 md:p-10 rounded-2xl shadow-2xl border border-white/10 relative overflow-hidden">
-            <img src="/assets/bugzilla4.png" alt="Tokenomics Background" class="absolute top-0 left-0 w-full h-full object-cover opacity-10 blur-sm z-0">
+            <img src="/assets/bugzilla4.png" alt="Tokenomics Background" class="absolute top-0 left-0 w-full h-full object-cover opacity-10 z-0">
             <div class="relative z-10">
                 <h3 class="text-4xl font-bold text-center text-white mb-10 tracking-wide">Tokenomics</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left text-lg">
@@ -145,6 +160,73 @@
           </div>
         </section>
 
+        <!-- SEZIONE NFT MARKETPLACE AGGIORNATA -->
+        <section class="px-6 max-w-7xl mx-auto py-16">
+            <div class="bg-zinc-900/70 backdrop-blur-sm p-8 md:p-12 rounded-2xl shadow-2xl border border-white/10 text-center">
+                <h2 class="text-5xl font-bold text-white mb-4 tracking-wide">$BUGGAME Minting Station</h2>
+                <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-10">
+                    Mint your official $BUGGAME NFT. Each mint grants you a unique, playable asset in the upcoming Bugzilla game.
+                </p>
+
+                <!-- Griglia di Minting con Immagini -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
+                    <!-- Card di Minting con Immagine -->
+                    <div class="bg-zinc-800/50 rounded-xl border border-zinc-700 flex flex-col text-center overflow-hidden">
+                        <img src="/assets/casella1.png" alt="Random NFT" class="w-full h-40 object-cover">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <h4 class="text-xl font-bold text-white">Random</h4>
+                            <p class="text-3xl font-bold text-green-400 my-2">$10</p>
+                            <button class="buy-nft-btn w-full mt-auto bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded-lg" data-rarity="Random" data-price="10">BUY NFT</button>
+                        </div>
+                    </div>
+                    <div class="bg-zinc-800/50 rounded-xl border border-zinc-700 flex flex-col text-center overflow-hidden">
+                        <img src="/assets/casella2.png" alt="Common NFT" class="w-full h-40 object-cover">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <h4 class="text-xl font-bold text-white">Common</h4>
+                            <p class="text-3xl font-bold text-green-400 my-2">$15</p>
+                            <button class="buy-nft-btn w-full mt-auto bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded-lg" data-rarity="Common" data-price="15">BUY NFT</button>
+                        </div>
+                    </div>
+                    <div class="bg-zinc-800/50 rounded-xl border border-zinc-700 flex flex-col text-center overflow-hidden">
+                        <img src="/assets/casella3.png" alt="Epic NFT" class="w-full h-40 object-cover">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <h4 class="text-xl font-bold text-blue-400">Epic</h4>
+                            <p class="text-3xl font-bold text-green-400 my-2">$25</p>
+                            <button class="buy-nft-btn w-full mt-auto bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded-lg" data-rarity="Epic" data-price="25">BUY NFT</button>
+                        </div>
+                    </div>
+                    <div class="bg-zinc-800/50 rounded-xl border border-zinc-700 flex flex-col text-center overflow-hidden">
+                        <img src="/assets/casella4.png" alt="Legendary NFT" class="w-full h-40 object-cover">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <h4 class="text-xl font-bold text-purple-400">Legendary</h4>
+                            <p class="text-3xl font-bold text-green-400 my-2">$50</p>
+                            <button class="buy-nft-btn w-full mt-auto bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded-lg" data-rarity="Legendary" data-price="50">BUY NFT</button>
+                        </div>
+                    </div>
+                    <div class="bg-zinc-800/50 rounded-xl border-2 border-yellow-400 flex flex-col text-center overflow-hidden shadow-lg shadow-yellow-500/20">
+                        <img src="/assets/casella5.png" alt="$BUGGER NFT" class="w-full h-40 object-cover">
+                        <div class="p-4 flex flex-col flex-grow">
+                            <h4 class="text-xl font-bold text-yellow-400">$BUGGER</h4>
+                            <p class="text-3xl font-bold text-green-400 my-2">$100</p>
+                            <button class="buy-nft-btn w-full mt-auto bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 rounded-lg" data-rarity="$BUGGER" data-price="100">BUY NFT</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Marketplace Generale con Creazione -->
+                <div class="flex justify-between items-center mb-6 border-t border-zinc-700 pt-10">
+                    <h4 class="text-2xl font-bold text-white">Community Creations</h4>
+                    <button id="create-nft-button" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg shadow-md hover:scale-105 transition-all">
+                        Create your NFT
+                    </button>
+                </div>
+                <div class="min-h-[200px] bg-zinc-800/50 rounded-lg p-8 flex items-center justify-center">
+                    <p class="text-gray-500">The marketplace is currently empty. Be the first to create an NFT!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEZIONE COMMUNITY -->
         <section class="px-6 max-w-7xl mx-auto py-16">
             <div class="bg-zinc-900/70 backdrop-blur-sm p-8 md:p-12 rounded-2xl shadow-2xl border border-white/10 text-center flex flex-col md:flex-row items-center gap-8">
                 <img src="/assets/bugzilla1.png" alt="Community" class="w-48 h-48 rounded-full shadow-lg shadow-purple-500/20 object-cover">
@@ -165,7 +247,7 @@
         </footer>
     </main>
 
-    <!-- Wallet selection modal -->
+    <!-- MODAL CONNESSIONE WALLET -->
     <div id="wallet-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center hidden z-50">
         <div class="bg-zinc-800 p-8 rounded-2xl shadow-lg border border-white/10 w-full max-w-xs text-center">
             <h3 class="text-xl font-bold mb-6">Select a Wallet</h3>
@@ -174,6 +256,98 @@
                 <button id="solflare-btn" class="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-4 rounded-lg transition-colors">Connect Solflare</button>
             </div>
             <button id="close-modal-btn" class="mt-6 text-gray-400 hover:text-white">Cancel</button>
+        </div>
+    </div>
+
+    <!-- MODAL CONFERMA ACQUISTO NFT -->
+    <div id="nft-purchase-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center hidden z-50 p-4">
+        <div class="bg-zinc-900 border border-zinc-700 p-8 rounded-2xl shadow-lg w-full max-w-md text-left relative">
+            <button id="close-purchase-modal-btn" class="absolute top-4 right-4 text-gray-400 hover:text-white">&times;</button>
+            <h3 class="text-2xl font-bold mb-2 text-white">Confirm Purchase</h3>
+            <p class="text-gray-400 mb-6">You are about to mint a new $BUGGAME NFT.</p>
+            
+            <div class="space-y-4">
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-300">Rarity:</span>
+                    <span id="purchase-rarity" class="font-bold text-white"></span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-300">Price (USD):</span>
+                    <span id="purchase-price-usd" class="font-bold text-white"></span>
+                </div>
+                <div class="flex justify-between items-center border-t border-zinc-700 pt-4 mt-4">
+                    <span class="text-gray-300">Total (approx.):</span>
+                    <span id="purchase-price-sol" class="font-bold text-green-400"></span>
+                </div>
+                <p class="text-xs text-center text-gray-500 pt-2">*Price in SOL is based on the current market rate and may vary slightly.</p>
+            </div>
+
+            <div class="pt-6">
+                <button id="confirm-purchase-btn" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg shadow-md transition-all">
+                    Confirm & Mint
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL CREAZIONE NFT -->
+    <div id="nft-creation-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center hidden z-50 p-4">
+        <div class="bg-zinc-900 border border-zinc-700 p-8 rounded-2xl shadow-lg w-full max-w-md text-left relative">
+            <button id="close-nft-modal-btn" class="absolute top-4 right-4 text-gray-400 hover:text-white">&times;</button>
+            <h3 class="text-2xl font-bold mb-6 text-white">Create your Bugzilla NFT</h3>
+            
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Image or GIF</label>
+                    <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-zinc-600 border-dashed rounded-md">
+                        <div class="space-y-1 text-center">
+                            <img id="nft-image-preview" src="" alt="NFT Preview" class="hidden mx-auto h-24 w-auto mb-4">
+                            <svg id="nft-image-placeholder" class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true"><path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                            <div class="flex text-sm text-gray-500">
+                                <label for="nft-file-upload" class="relative cursor-pointer bg-zinc-800 rounded-md font-medium text-green-400 hover:text-green-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-zinc-900 focus-within:ring-green-500 px-2">
+                                    <span>Upload a file</span>
+                                    <input id="nft-file-upload" name="nft-file-upload" type="file" class="sr-only" accept="image/png, image/jpeg, image/gif">
+                                </label>
+                                <p class="pl-1">or drag and drop</p>
+                            </div>
+                            <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="nft-name" class="block text-sm font-medium text-gray-300">Name</label>
+                    <input type="text" id="nft-name" class="mt-1 block w-full bg-zinc-800 border-zinc-600 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm p-2">
+                </div>
+                <div>
+                    <label for="nft-description" class="block text-sm font-medium text-gray-300">Description</label>
+                    <textarea id="nft-description" rows="3" class="mt-1 block w-full bg-zinc-800 border-zinc-600 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm p-2"></textarea>
+                </div>
+                <div>
+                    <label for="nft-rarity" class="block text-sm font-medium text-gray-300">Rarity</label>
+                    <select id="nft-rarity" class="mt-1 block w-full bg-zinc-800 border-zinc-600 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm p-2">
+                        <option>Common</option>
+                        <option>Uncommon</option>
+                        <option>Rare</option>
+                        <option>Epic</option>
+                        <option>Legendary</option>
+                    </select>
+                </div>
+
+                <div class="pt-4">
+                    <p class="text-sm text-gray-400 mb-2">Minting Fee</p>
+                    <div class="flex gap-4">
+                        <button id="pay-sol-btn" class="flex-1 bg-purple-600 border-2 border-purple-600 text-white font-bold py-2 rounded-lg">0.02 SOL</button>
+                        <button id="pay-bugz-btn" class="flex-1 bg-transparent border-2 border-zinc-600 text-gray-400 font-bold py-2 rounded-lg">1,000,000 $BUGZ</button>
+                    </div>
+                </div>
+
+                <div class="pt-4">
+                    <button id="mint-nft-button" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg shadow-md transition-all">
+                        Create & Mint NFT
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -214,11 +388,31 @@
             const tokenListLoader = document.getElementById('token-list-loader');
             const disconnectBtn = document.getElementById('disconnect-btn');
             
-            // Modal
+            // Modal Connessione
             const walletModal = document.getElementById('wallet-modal');
             const phantomBtn = document.getElementById('phantom-btn');
             const solflareBtn = document.getElementById('solflare-btn');
             const closeModalBtn = document.getElementById('close-modal-btn');
+
+            // Modal Creazione NFT
+            const nftCreationModal = document.getElementById('nft-creation-modal');
+            const createNftButton = document.getElementById('create-nft-button');
+            const closeNftModalBtn = document.getElementById('close-nft-modal-btn');
+            const nftFileUpload = document.getElementById('nft-file-upload');
+            const nftImagePreview = document.getElementById('nft-image-preview');
+            const nftImagePlaceholder = document.getElementById('nft-image-placeholder');
+            const mintNftButton = document.getElementById('mint-nft-button');
+            const paySolBtn = document.getElementById('pay-sol-btn');
+            const payBugzBtn = document.getElementById('pay-bugz-btn');
+
+            // Modal Acquisto NFT
+            const nftPurchaseModal = document.getElementById('nft-purchase-modal');
+            const buyNftButtons = document.querySelectorAll('.buy-nft-btn');
+            const closePurchaseModalBtn = document.getElementById('close-purchase-modal-btn');
+            const purchaseRarityEl = document.getElementById('purchase-rarity');
+            const purchasePriceUsdEl = document.getElementById('purchase-price-usd');
+            const purchasePriceSolEl = document.getElementById('purchase-price-sol');
+            const confirmPurchaseBtn = document.getElementById('confirm-purchase-btn');
 
             // --- STATO E VARIABILI GLOBALI ---
             let progress = 0;
@@ -231,6 +425,8 @@
             let columns;
             const fontSize = 12;
             const chars = "░▒▓█▌▐◎✶☄★✦✧";
+            let paymentMethod = 'SOL'; // Default payment
+            let currentPurchase = {};
 
             // --- FUNZIONI DI SETUP E ANIMAZIONE ---
             function setCanvasDimensions() {
@@ -519,6 +715,106 @@
                 walletModal.classList.add('hidden');
             }
 
+            // --- LOGICA MODAL ACQUISTO NFT ---
+            async function openPurchaseModal(rarity, priceUsd) {
+                if (!connectedWallet) {
+                    alert("Please connect your wallet first to mint an NFT.");
+                    return;
+                }
+                
+                purchaseRarityEl.textContent = rarity;
+                purchasePriceUsdEl.textContent = `$${priceUsd}`;
+                purchasePriceSolEl.textContent = "Loading price...";
+                
+                currentPurchase = { rarity, priceUsd };
+                nftPurchaseModal.classList.remove('hidden');
+
+                try {
+                    // Fetch current SOL price from CoinGecko API
+                    const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd');
+                    const data = await response.json();
+                    const solPrice = data.solana.usd;
+                    const priceInSol = (priceUsd / solPrice).toFixed(5);
+                    purchasePriceSolEl.textContent = `~${priceInSol} SOL`;
+                    currentPurchase.priceSol = priceInSol;
+                } catch (error) {
+                    console.error("Failed to fetch SOL price:", error);
+                    purchasePriceSolEl.textContent = "Error";
+                }
+            }
+
+            function closePurchaseModal() {
+                nftPurchaseModal.classList.add('hidden');
+            }
+
+            async function handlePurchase() {
+                alert(`Simulazione di acquisto per 1 NFT ${currentPurchase.rarity} per ~${currentPurchase.priceSol} SOL.`);
+                try {
+                    const message = `Confirming purchase of 1 ${currentPurchase.rarity} $BUGGAME NFT for ~$${currentPurchase.priceUsd}.`;
+                    const encodedMessage = new TextEncoder().encode(message);
+                    await connectedWallet.signMessage(encodedMessage, "utf8");
+                    alert("Signature successful! Your NFT would be minted now.");
+                    closePurchaseModal();
+                } catch (error) {
+                    alert("Signature was cancelled. Purchase failed.");
+                }
+            }
+
+            // --- LOGICA MODAL CREAZIONE NFT ---
+            function openNftModal() {
+                if (!connectedWallet) {
+                    alert("Please connect your wallet first to create an NFT.");
+                    return;
+                }
+                nftCreationModal.classList.remove('hidden');
+            }
+
+            function closeNftModal() {
+                nftCreationModal.classList.add('hidden');
+            }
+
+            nftFileUpload.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        nftImagePreview.src = event.target.result;
+                        nftImagePreview.classList.remove('hidden');
+                        nftImagePlaceholder.classList.add('hidden');
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            paySolBtn.addEventListener('click', () => {
+                paymentMethod = 'SOL';
+                paySolBtn.classList.add('border-green-500');
+                paySolBtn.classList.remove('border-zinc-600', 'text-gray-400');
+                payBugzBtn.classList.remove('border-green-500');
+                payBugzBtn.classList.add('border-zinc-600', 'text-gray-400');
+            });
+            payBugzBtn.addEventListener('click', () => {
+                paymentMethod = 'BUGZ';
+                payBugzBtn.classList.add('border-green-500');
+                payBugzBtn.classList.remove('border-zinc-600', 'text-gray-400');
+                paySolBtn.classList.remove('border-green-500');
+                paySolBtn.classList.add('border-zinc-600', 'text-gray-400');
+            });
+
+            async function handleMint() {
+                alert(`Simulazione di minting con ${paymentMethod}... In un'app reale, questo richiederebbe l'upload dell'immagine su IPFS, la creazione dei metadati e l'invio di una transazione complessa con Metaplex.`);
+                // SIMULAZIONE: Chiedi una firma per mostrare il processo
+                try {
+                    const message = `Simulating NFT mint for "${document.getElementById('nft-name').value}".`;
+                    const encodedMessage = new TextEncoder().encode(message);
+                    await connectedWallet.signMessage(encodedMessage, "utf8");
+                    alert("Signature successful! NFT would be minted now.");
+                    closeNftModal();
+                } catch (error) {
+                    alert("Signature was cancelled. Minting failed.");
+                }
+            }
+
             // --- AVVIO E GESTIONE ---
             setCanvasDimensions();
             animationLoop();
@@ -532,6 +828,18 @@
             dashboardButton.addEventListener('click', toggleDashboard);
             disconnectBtn.addEventListener('click', disconnectWallet);
             copyAddressBtn.addEventListener('click', copyAddress);
+            buyNftButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const rarity = e.target.dataset.rarity;
+                    const price = e.target.dataset.price;
+                    openPurchaseModal(rarity, price);
+                });
+            });
+            closePurchaseModalBtn.addEventListener('click', closePurchaseModal);
+            confirmPurchaseBtn.addEventListener('click', handlePurchase);
+            createNftButton.addEventListener('click', openNftModal);
+            closeNftModalBtn.addEventListener('click', closeNftModal);
+            mintNftButton.addEventListener('click', handleMint);
 
             document.addEventListener('click', (event) => {
                 if (!walletContainer.contains(event.target)) {
