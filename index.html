@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$BUGZILLA - Conquer the Chaos</title>
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Solana Web3.js Library -->
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js"></script>
+    <script>
+        // ===============================================================================================
+        // !! IMPORTANTE !! INCOLLA LA TUA VERA API KEY DI HELIUS QUI SOTTO !!
+        // ===============================================================================================
+        window.HELIUS_API_KEY = "LA_TUA_API_KEY_QUI";
+    </script>
+    <style>
+        @keyframes background-pan {
+            0% { background-position: 0% center; }
+            100% { background-position: -200% center; }
+        }
+        .animated-gradient {
+            background-size: 200% auto;
+            background-image: linear-gradient(to right, #2dd4bf, #34d399, #a3e635, #facc15, #a3e635, #34d399, #2dd4bf);
+            animation: background-pan 3s linear infinite;
+        }
+        /* Stile per l'header dinamico */
+        @keyframes header-pan {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+        .header-animated-bg {
+            background-size: 200% 200%;
+            background-image: linear-gradient(110deg, rgba(31, 0, 92, 0.2), rgba(9, 9, 11, 0.5) 25%, rgba(9, 9, 11, 0.5) 75%, rgba(0, 27, 61, 0.2));
+            animation: header-pan 15s linear infinite;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-black via-zinc-900 to-zinc-800 text-white font-sans">
+
+    <main>
+        <!-- HEADER CON SFONDO DINAMICO -->
+        <header class="relative shadow-md sticky top-0 z-50 border-b border-zinc-800 header-animated-bg">
+            <div class="relative z-10 flex justify-between items-center px-6 py-4">
+                <div class="flex items-center gap-3">
+                    <img src="/assets/bugzilla3.png" alt="$BUGZILLA Logo" class="w-12 h-12 rounded-full" />
+                    <h1 class="text-3xl font-extrabold text-green-400 tracking-widest">$BUGZILLA</h1>
+                </div>
+                <div id="wallet-container" class="relative">
+                    <button id="dashboard-button" class="hidden items-center gap-2 bg-zinc-800 border border-zinc-700 rounded-full py-2 px-4 hover:bg-zinc-700 transition-colors">
+                        <span id="dashboard-address" class="font-bold text-sm"></span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div id="wallet-dashboard" class="hidden absolute top-full right-0 mt-2 w-80 bg-zinc-900/90 backdrop-blur-md border border-zinc-700 rounded-2xl shadow-lg z-50">
+                        <div class="p-4">
+                            <div class="flex justify-between items-center mb-4">
+                                <p class="text-sm text-gray-400">My Wallet</p>
+                                <button id="copy-address-btn" title="Copy Address" class="text-gray-400 hover:text-white">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                </button>
+                            </div>
+                            <div id="token-list-container" class="max-h-60 overflow-y-auto pr-2">
+                                <div id="token-list-loader" class="text-center py-4">
+                                    <p class="text-gray-400">Loading tokens...</p>
+                                </div>
+                            </div>
+                            <button id="disconnect-btn" class="w-full mt-4 bg-red-600 hover:bg-red-700 text-white font-bold py-2 rounded-lg transition-colors">Disconnect</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="relative min-h-[80vh] flex items-center justify-center text-center overflow-hidden p-6">
+            <!-- Sfondo generale della sezione -->
+            <img src="/assets/bugzilla3.png" alt="Hero Background" class="absolute w-full h-full object-cover scale-150 blur-xl opacity-30" />
+            
+            <!-- La Carta, ora con il suo sfondo interno -->
+            <div class="relative z-10 w-full max-w-lg bg-zinc-900/70 backdrop-blur-sm rounded-2xl shadow-2xl border border-white/10 text-center overflow-hidden">
+                <!-- Immagine di sfondo della carta -->
+                <img src="/assets/bugzilla4.png" alt="Card Background" class="absolute top-0 left-0 w-full h-full object-cover opacity-20 blur-sm z-0">
+                
+                <!-- Contenuto della carta -->
+                <div class="relative z-10 p-8 md:p-12">
+                    <img src="/assets/bugzilla2.png" alt="Bugzilla Swarm" class="max-w-[250px] mx-auto rounded-xl shadow-lg shadow-purple-500/20 mb-8">
+                    <h2 class="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg mb-8">
+                        Conquer the Chaos
+                    </h2>
+                    <button id="hero-connect-button" class="bg-gradient-to-tr from-purple-600 to-pink-600 text-white text-xl font-bold py-4 px-10 rounded-full shadow-xl hover:scale-105 transition-all">
+                        <span>Connect Wallet</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="relative h-[550px] bg-black flex flex-col justify-center items-center overflow-hidden py-12">
+            <div class="w-full max-w-5xl mx-auto flex flex-col items-center gap-8">
+                <canvas id="matrix-canvas" class="w-full h-[400px]"></canvas>
+                <div class="w-full max-w-2xl px-4">
+                    <div class="w-full bg-zinc-800/50 rounded-full h-8 border-2 border-zinc-700 shadow-inner relative overflow-hidden">
+                        <div id="progress-bar-inner" class="animated-gradient h-full rounded-full transition-all duration-500 ease-linear" style="width: 0%;"></div>
+                        <span id="progress-percentage" class="absolute inset-0 flex items-center justify-center text-lg font-bold text-white drop-shadow-lg">0%</span>
+                    </div>
+                </div>
+                <button id="claim-button" disabled class="mt-2 bg-zinc-700 text-zinc-500 font-bold text-xl py-4 px-10 rounded-lg shadow-lg cursor-not-allowed opacity-50 transition-all duration-500 flex items-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    <span>CLAIM AIRDROP$</span>
+                </button>
+            </div>
+        </section>
+
+        <section class="px-6 max-w-7xl mx-auto py-16">
+          <div class="bg-zinc-900/70 backdrop-blur-sm p-8 md:p-10 rounded-2xl shadow-2xl border border-white/10 relative overflow-hidden">
+            <img src="/assets/bugzilla4.png" alt="Tokenomics Background" class="absolute top-0 left-0 w-full h-full object-cover opacity-10 blur-sm z-0">
+            <div class="relative z-10">
+                <h3 class="text-4xl font-bold text-center text-white mb-10 tracking-wide">Tokenomics</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left text-lg">
+                  <div class="bg-zinc-800/50 p-6 rounded-xl border border-white/10 flex flex-col items-start gap-3">
+                    <span class="text-3xl">🌐</span>
+                    <p class="text-gray-400 font-semibold">Total Supply</p>
+                    <h4 id="total-supply" class="text-2xl font-bold text-green-400">1,000,000,000</h4>
+                    <p class="text-sm text-gray-500">The total amount of $BUGZILLA that will ever exist.</p>
+                  </div>
+                  <div class="bg-zinc-800/50 p-6 rounded-xl border border-white/10 flex flex-col items-start gap-3">
+                    <span class="text-3xl">🔒</span>
+                    <p class="text-gray-400 font-semibold">Liquidity</p>
+                    <h4 class="text-2xl font-bold text-green-400">100% Locked</h4>
+                    <p class="text-sm text-gray-500">Ensures a stable market and prevents rug-pulls by locking the initial pool.</p>
+                  </div>
+                  <div class="bg-zinc-800/50 p-6 rounded-xl border border-white/10 flex flex-col items-start gap-3">
+                    <span class="text-3xl">🚀</span>
+                    <p class="text-gray-400 font-semibold">Transaction Tax</p>
+                    <h4 class="text-2xl font-bold text-green-400">0% Buy / 0% Sell</h4>
+                    <p class="text-sm text-gray-500">You keep 100% of your tokens when you buy, sell, or trade.</p>
+                  </div>
+                  <div class="bg-zinc-800/50 p-6 rounded-xl border border-white/10 flex flex-col items-start gap-3">
+                    <span class="text-3xl">👥</span>
+                    <p class="text-gray-400 font-semibold">Ownership</p>
+                    <h4 class="text-2xl font-bold text-green-400">Renounced</h4>
+                    <p class="text-sm text-gray-500">The contract is renounced, putting full control in the hands of the community.</p>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="px-6 max-w-7xl mx-auto py-16">
+            <div class="bg-zinc-900/70 backdrop-blur-sm p-8 md:p-12 rounded-2xl shadow-2xl border border-white/10 text-center flex flex-col md:flex-row items-center gap-8">
+                <img src="/assets/bugzilla1.png" alt="Community" class="w-48 h-48 rounded-full shadow-lg shadow-purple-500/20 object-cover">
+                <div class="text-center md:text-left">
+                    <h3 class="text-4xl font-bold text-white mb-4 tracking-wide">Join The Swarm</h3>
+                    <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-6">
+                        Alpha leaks, community events, and the future of the infestation are discussed on Telegram. Don't miss out.
+                    </p>
+                    <a href="https://t.me/Bugzil_la" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-500 hover:bg-blue-600 text-white text-xl font-bold py-4 px-10 rounded-full shadow-xl hover:scale-105 transition-all">
+                        <span>Join Telegram</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="py-8 text-center text-gray-500 text-sm">
+          <p>© 2025 Bugzilla. All rights reserved.</p>
+        </footer>
+    </main>
+
+    <!-- Wallet selection modal -->
+    <div id="wallet-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center hidden z-50">
+        <div class="bg-zinc-800 p-8 rounded-2xl shadow-lg border border-white/10 w-full max-w-xs text-center">
+            <h3 class="text-xl font-bold mb-6">Select a Wallet</h3>
+            <div class="flex flex-col gap-4">
+                <button id="phantom-btn" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-lg transition-colors">Connect Phantom</button>
+                <button id="solflare-btn" class="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-4 rounded-lg transition-colors">Connect Solflare</button>
+            </div>
+            <button id="close-modal-btn" class="mt-6 text-gray-400 hover:text-white">Cancel</button>
+        </div>
+    </div>
+
+    <!-- IL NOSTRO SCRIPT ORA È QUI SOTTO -->
+    <script>
+        // Attende che la pagina sia completamente caricata prima di eseguire qualsiasi cosa
+        window.onload = () => {
+
+            // --- CONFIGURAZIONE ---
+            const HELIUS_API_KEY = window.HELIUS_API_KEY; 
+            const BUGZILLA_MINT_ADDRESS = "YOUR_BUGZILLA_MINT_ADDRESS_HERE";
+            const PIXELATION_LEVEL = 8;
+            const SOLANA_RPC_URL = `https://mainnet.helius-rpc.com/?api-key=${HELIUS_API_KEY}`;
+
+            // --- OGGETTI SOLANA WEB3 ---
+            const { Connection, PublicKey } = solanaWeb3;
+            const connection = new Connection(SOLANA_RPC_URL);
+
+            // --- SELEZIONE DEGLI ELEMENTI DEL DOM ---
+            const canvas = document.getElementById('matrix-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            
+            // UI Principale
+            const totalSupplyText = document.getElementById('total-supply');
+            const heroConnectButton = document.getElementById('hero-connect-button');
+            const progressBarInner = document.getElementById('progress-bar-inner');
+            const progressPercentage = document.getElementById('progress-percentage');
+            const claimButton = document.getElementById('claim-button');
+
+            // UI Wallet e Dashboard
+            const walletContainer = document.getElementById('wallet-container');
+            const dashboardButton = document.getElementById('dashboard-button');
+            const dashboardAddress = document.getElementById('dashboard-address');
+            const walletDashboard = document.getElementById('wallet-dashboard');
+            const copyAddressBtn = document.getElementById('copy-address-btn');
+            const tokenListContainer = document.getElementById('token-list-container');
+            const tokenListLoader = document.getElementById('token-list-loader');
+            const disconnectBtn = document.getElementById('disconnect-btn');
+            
+            // Modal
+            const walletModal = document.getElementById('wallet-modal');
+            const phantomBtn = document.getElementById('phantom-btn');
+            const solflareBtn = document.getElementById('solflare-btn');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+
+            // --- STATO E VARIABILI GLOBALI ---
+            let progress = 0;
+            let totalSupply = 1_000_000_000;
+            let roachImage = null;
+            let pixelData = [];
+            let connectedWallet = null;
+            let fullAddress = '';
+            let drops = [];
+            let columns;
+            const fontSize = 12;
+            const chars = "░▒▓█▌▐◎✶☄★✦✧";
+
+            // --- FUNZIONI DI SETUP E ANIMAZIONE ---
+            function setCanvasDimensions() {
+                canvas.width = canvas.clientWidth;
+                canvas.height = canvas.clientHeight;
+                columns = Math.floor(canvas.width / fontSize);
+                drops = [];
+                for (let i = 0; i < columns; i++) {
+                    drops[i] = 1;
+                }
+            }
+
+            const img = new Image();
+            img.src = '/assets/blatta1.png';
+            img.onload = () => {
+                roachImage = img;
+                preparePixelData();
+            };
+            img.onerror = () => console.error("ERRORE CRITICO: Impossibile caricare l'immagine '/assets/blatta1.png'.");
+
+            function preparePixelData() {
+                const tempCanvas = document.createElement('canvas');
+                const tempCtx = tempCanvas.getContext('2d');
+                tempCanvas.width = roachImage.width;
+                tempCanvas.height = roachImage.height;
+                tempCtx.drawImage(roachImage, 0, 0);
+                const imageData = tempCtx.getImageData(0, 0, roachImage.width, roachImage.height).data;
+                pixelData = [];
+                for (let y = 0; y < roachImage.height; y += PIXELATION_LEVEL) {
+                    for (let x = 0; x < roachImage.width; x += PIXELATION_LEVEL) {
+                        const i = (y * roachImage.width + x) * 4;
+                        if (imageData[i + 3] > 128) {
+                            pixelData.push({ x, y, color: `rgba(${imageData[i]}, ${imageData[i+1]}, ${imageData[i+2]}, ${imageData[i+3]})` });
+                        }
+                    }
+                }
+                pixelData.sort(() => Math.random() - 0.5);
+            }
+
+            function activateClaimButton() {
+                claimButton.disabled = false;
+                claimButton.classList.remove('bg-zinc-700', 'text-zinc-500', 'cursor-not-allowed', 'opacity-50');
+                claimButton.classList.add('bg-green-500', 'text-white', 'hover:bg-green-400', 'shadow-lg', 'shadow-green-500/50');
+                claimButton.addEventListener('click', () => alert("Airdrop claimed! (Demo)"));
+            }
+
+            setInterval(() => {
+                if (progress < 100) {
+                    progress += 0.2;
+                    const currentProgress = Math.floor(progress);
+                    progressBarInner.style.width = `${currentProgress}%`;
+                    progressPercentage.textContent = `${currentProgress}%`;
+                    if (currentProgress >= 100) activateClaimButton();
+                }
+            }, 120);
+
+            setInterval(() => {
+                const amountToDecrease = Math.floor(Math.random() * 10000) + 500;
+                totalSupply = Math.max(0, totalSupply - amountToDecrease);
+                totalSupplyText.textContent = totalSupply.toLocaleString('en-US');
+            }, 2500);
+
+            function draw() {
+                if (!ctx) return;
+                ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                ctx.fillStyle = "#39ff14";
+                ctx.font = `${fontSize}px monospace`;
+                for (let i = 0; i < drops.length; i++) {
+                    const text = chars[Math.floor(Math.random() * chars.length)];
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+                
+                if (roachImage && pixelData.length > 0) {
+                    const imgAspectRatio = roachImage.width / roachImage.height;
+                    const canvasHeight = canvas.height * 0.9;
+                    const imgHeight = canvasHeight;
+                    const imgWidth = imgHeight * imgAspectRatio;
+                    const xOffset = (canvas.width / 2) - (imgWidth / 2);
+                    const yOffset = (canvas.height / 2) - (imgHeight / 2);
+                    const scaleX = imgWidth / roachImage.width;
+                    const scaleY = imgHeight / roachImage.height;
+                    const pixelsToDraw = Math.floor((progress / 100) * pixelData.length);
+                    for (let i = 0; i < pixelsToDraw; i++) {
+                        const pixel = pixelData[i];
+                        ctx.fillStyle = pixel.color;
+                        ctx.fillRect(xOffset + pixel.x * scaleX, yOffset + pixel.y * scaleY, PIXELATION_LEVEL * scaleX, PIXELATION_LEVEL * scaleY);
+                    }
+                }
+            }
+            
+            function animationLoop() {
+                draw();
+                requestAnimationFrame(animationLoop);
+            }
+
+            // --- LOGICA DELLA DASHBOARD E DEL WALLET ---
+
+            function toggleDashboard() {
+                walletDashboard.classList.toggle('hidden');
+            }
+
+            function updateUiToConnectedState(publicKey) {
+                fullAddress = publicKey.toString();
+                const shortAddress = `${fullAddress.substring(0, 4)}...${fullAddress.substring(fullAddress.length - 4)}`;
+                dashboardButton.classList.remove('hidden');
+                dashboardButton.classList.add('flex');
+                dashboardAddress.textContent = shortAddress;
+                heroConnectButton.classList.add('hidden');
+                fetchAndDisplayTokens(fullAddress);
+            }
+
+            function updateUiToDisconnectedState() {
+                dashboardButton.classList.add('hidden');
+                dashboardButton.classList.remove('flex');
+                walletDashboard.classList.add('hidden');
+                heroConnectButton.classList.remove('hidden');
+                connectedWallet = null;
+                fullAddress = '';
+            }
+
+            async function fetchAndDisplayTokens(publicKeyString) {
+                if (HELIUS_API_KEY === "LA_TUA_API_KEY_QUI") {
+                    console.error("ERRORE: Inserisci la tua API Key di Helius nel file bugzilla.html");
+                    tokenListContainer.innerHTML = `<p class="text-center text-red-500">API Key missing in HTML.</p>`;
+                    return;
+                }
+
+                tokenListContainer.innerHTML = '';
+                tokenListLoader.style.display = 'block';
+
+                try {
+                    const ownerPublicKey = new PublicKey(publicKeyString);
+                    const [solBalance, tokenAccounts] = await Promise.all([
+                        connection.getBalance(ownerPublicKey),
+                        connection.getParsedTokenAccountsByOwner(ownerPublicKey, {
+                            programId: new PublicKey('TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA')
+                        })
+                    ]);
+
+                    const tokensWithBalance = tokenAccounts.value
+                        .map(acc => acc.account.data.parsed.info)
+                        .filter(info => info.tokenAmount.uiAmount > 0);
+                    
+                    let allTokens = [];
+
+                    if (solBalance > 0) {
+                        allTokens.push({
+                            isNative: true,
+                            mint: 'So11111111111111111111111111111111111111112',
+                            balance: (solBalance / solanaWeb3.LAMPORTS_PER_SOL).toLocaleString('en-US', { maximumFractionDigits: 4 }),
+                            symbol: 'SOL',
+                            logo: 'https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/So11111111111111111111111111111111111111112/logo.png'
+                        });
+                    }
+
+                    if (tokensWithBalance.length > 0) {
+                        const mintAddresses = tokensWithBalance.map(t => t.mint);
+                        const response = await fetch(SOLANA_RPC_URL, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                jsonrpc: '2.0',
+                                id: 'bugzilla-dapp',
+                                method: 'getAssetBatch',
+                                params: { ids: mintAddresses },
+                            }),
+                        });
+                        const { result: assets } = await response.json();
+                        
+                        const enrichedSplTokens = tokensWithBalance.map(token => {
+                            const asset = assets.find(a => a.id === token.mint);
+                            return {
+                                isNative: false,
+                                mint: token.mint,
+                                balance: parseFloat(token.tokenAmount.uiAmountString).toLocaleString('en-US', { maximumFractionDigits: 2 }),
+                                symbol: asset?.content?.metadata?.symbol || (token.mint === BUGZILLA_MINT_ADDRESS ? '$BUGZILLA' : token.mint.substring(0, 6) + '...'),
+                                logo: asset?.content?.links?.image || (token.mint === BUGZILLA_MINT_ADDRESS ? '/assets/bugzilla1.png' : 'https://placehold.co/32x32/374151/9ca3af?text=?')
+                            };
+                        });
+                        allTokens.push(...enrichedSplTokens);
+                    }
+
+                    allTokens.sort((a, b) => {
+                        if (a.isNative) return -1;
+                        if (b.isNative) return 1;
+                        if (a.mint === BUGZILLA_MINT_ADDRESS) return -1;
+                        if (b.mint === BUGZILLA_MINT_ADDRESS) return 1;
+                        return 0;
+                    });
+
+                    tokenListLoader.style.display = 'none';
+
+                    if (allTokens.length === 0) {
+                        tokenListContainer.innerHTML = `<p class="text-center text-gray-500">No assets found.</p>`;
+                        return;
+                    }
+
+                    allTokens.forEach(token => {
+                        const tokenEl = document.createElement('div');
+                        tokenEl.className = 'flex items-center justify-between p-2 rounded-lg hover:bg-zinc-800';
+                        tokenEl.innerHTML = `
+                            <div class="flex items-center gap-3">
+                                <img src="${token.logo}" class="w-8 h-8 rounded-full bg-zinc-700" alt="${token.symbol} logo" onerror="this.src='https://placehold.co/32x32/374151/9ca3af?text=?'">
+                                <span class="font-bold">${token.symbol}</span>
+                            </div>
+                            <span class="text-gray-300">${token.balance}</span>
+                        `;
+                        tokenListContainer.appendChild(tokenEl);
+                    });
+
+                } catch (error) {
+                    console.error("Impossibile recuperare i token:", error);
+                    tokenListLoader.style.display = 'none';
+                    tokenListContainer.innerHTML = `<p class="text-center text-red-500">Failed to load tokens.</p>`;
+                }
+            }
+
+            async function handleConnection(provider) {
+                try {
+                    await provider.connect();
+                    const publicKey = provider.publicKey;
+                    const message = `Sign this message to verify you are the owner of this wallet for $BUGZILLA.`;
+                    const encodedMessage = new TextEncoder().encode(message);
+                    await provider.signMessage(encodedMessage, "utf8");
+                    
+                    connectedWallet = provider;
+                    updateUiToConnectedState(publicKey);
+                    closeModal();
+                } catch (err) {
+                    console.error("Connessione o firma fallita:", err);
+                    updateUiToDisconnectedState();
+                }
+            }
+
+            async function connectPhantom() {
+                if ('phantom' in window && window.phantom.solana) await handleConnection(window.phantom.solana);
+                else window.open('https://phantom.app/', '_blank');
+            }
+
+            async function connectSolflare() {
+                if ('solflare' in window) await handleConnection(window.solflare);
+                else window.open('https://solflare.com/', '_blank');
+            }
+            
+            async function disconnectWallet() {
+                if (connectedWallet && connectedWallet.disconnect) {
+                    try {
+                        await connectedWallet.disconnect();
+                    } catch (error) {
+                        console.error("Errore durante la disconnessione:", error);
+                    }
+                }
+                updateUiToDisconnectedState();
+            }
+
+            function copyAddress() {
+                if (!fullAddress) return;
+                const textArea = document.createElement("textarea");
+                textArea.value = fullAddress;
+                textArea.style.position = "fixed";
+                textArea.style.left = "-9999px";
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    copyAddressBtn.title = 'Copied!';
+                    setTimeout(() => { copyAddressBtn.title = 'Copy Address'; }, 2000);
+                } catch (err) {
+                    console.error('Fallback: Impossibile copiare l\'indirizzo', err);
+                }
+                document.body.removeChild(textArea);
+            }
+
+            function openModal() {
+                walletModal.classList.remove('hidden');
+            }
+
+            function closeModal() {
+                walletModal.classList.add('hidden');
+            }
+
+            // --- AVVIO E GESTIONE ---
+            setCanvasDimensions();
+            animationLoop();
+            window.addEventListener('resize', setCanvasDimensions);
+
+            // Event Listeners
+            heroConnectButton.addEventListener('click', openModal);
+            closeModalBtn.addEventListener('click', closeModal);
+            phantomBtn.addEventListener('click', connectPhantom);
+            solflareBtn.addEventListener('click', connectSolflare);
+            dashboardButton.addEventListener('click', toggleDashboard);
+            disconnectBtn.addEventListener('click', disconnectWallet);
+            copyAddressBtn.addEventListener('click', copyAddress);
+
+            document.addEventListener('click', (event) => {
+                if (!walletContainer.contains(event.target)) {
+                    walletDashboard.classList.add('hidden');
+                }
+            });
+        };
+    </script>
+</body>
+</html>
