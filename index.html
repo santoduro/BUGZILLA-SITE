@@ -5,15 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>$BUGZILLA - Conquer the Chaos</title>
     
-    <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Solana Web3.js Library -->
     <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.js"></script>
     <script>
         // ===============================================================================================
         // !! IMPORTANTE !! INCOLLA LA TUA VERA API KEY DI HELIUS QUI SOTTO !!
         // ===============================================================================================
-        window.HELIUS_API_KEY = "LA_TUA_API_KEY_QUI";
+        window.HELIUS_API_KEY = "7863d9ce-8491-47ca-8fd9-a30e3b554fbc";
     </script>
     <style>
         @keyframes background-pan {
@@ -54,7 +52,6 @@
 <body class="bg-black text-white font-sans">
 
     <main>
-        <!-- HEADER -->
         <header class="relative shadow-md sticky top-0 z-50 border-b border-zinc-800 header-animated-bg">
             <div class="relative z-10 flex justify-between items-center px-6 py-4">
                 <div class="flex items-center gap-3">
@@ -66,7 +63,7 @@
                         <span id="dashboard-address" class="font-bold text-sm"></span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
                     </button>
-                    <div id="wallet-dashboard" class="hidden absolute top-full right-0 mt-2 w-80 bg-zinc-900/90 backdrop-blur-md border border-zinc-700 rounded-2xl shadow-lg z-50">
+                    <div id="wallet-dashboard" class="hidden absolute top-full right-0 mt-2 w-80 bg-zinc-900 backdrop-blur-md border border-zinc-700 rounded-2xl shadow-lg z-50">
                         <div class="p-4">
                             <div class="flex justify-between items-center mb-4">
                                 <p class="text-sm text-gray-400">My Wallet</p>
@@ -86,14 +83,11 @@
             </div>
         </header>
 
-        <!-- TICKER BANNER DINAMICO -->
         <div class="bg-yellow-400 text-black py-2 ticker-wrap">
             <div id="ticker-content" class="ticker-move">
-                <!-- Il contenuto verrà generato dinamicamente dallo script -->
-            </div>
+                </div>
         </div>
 
-        <!-- SEZIONE HERO -->
         <section class="relative min-h-screen flex flex-col items-center justify-center text-center p-6 bg-gradient-to-br from-orange-600 via-red-700 to-orange-600">
             <div class="flex flex-col items-center gap-4 z-10">
                 <h2 class="text-8xl md:text-9xl font-black text-white tracking-wider drop-shadow-lg" style="font-family: Impact, sans-serif;">BUGZILLA</h2>
@@ -105,20 +99,18 @@
             </div>
         </section>
 
-        <!-- SEZIONE WHERE TO BUY -->
         <section class="relative px-6 max-w-7xl mx-auto py-16 text-center">
-            <img src="/assets/bugzilla6.png" alt="Buy Background" class="absolute inset-0 w-full h-full object-cover opacity-10 z-0">
-            <div class="absolute inset-0 w-full h-full bg-black/50 z-0"></div>
+            <img src="/assets/bugzilla6.png" alt="Buy Background" class="absolute inset-0 w-full h-full object-cover z-0">
             <div class="relative z-10">
                 <h2 class="text-5xl font-extrabold mb-12 tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-yellow-400">BUY $BUGZILLA ON</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    <div class="bg-zinc-900/70 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-white/10 flex flex-col items-center text-center">
+                    <div class="bg-zinc-900 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-white/10 flex flex-col items-center text-center">
                         <img src="/assets/pump-logo.png" alt="Pump.fun Logo" class="w-24 h-24 mb-4">
                         <h3 class="text-3xl font-bold text-white mb-2">Pump.fun</h3>
                         <p class="text-gray-400 mb-6 flex-grow">Get in early. Be part of the initial swarm before the Raydium launch.</p>
                         <a href="https://pump.fun/" target="_blank" rel="noopener noreferrer" class="w-full bg-white text-black font-bold py-3 px-8 rounded-lg hover:bg-gray-200 transition-colors">BUY NOW</a>
                     </div>
-                    <div class="bg-zinc-900/70 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-white/10 flex flex-col items-center text-center">
+                    <div class="bg-zinc-900 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-white/10 flex flex-col items-center text-center">
                         <svg class="w-24 h-24 mb-4" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32 0L39.36 10.72L51.68 12.96L43.28 22.48L44.48 35.36L32 30.24L19.52 35.36L20.72 22.48L12.32 12.96L24.64 10.72L32 0Z" fill="#3B82F6"></path><path d="M32 64L39.36 53.28L51.68 51.04L43.28 41.52L44.48 28.64L32 33.76L19.52 28.64L20.72 41.52L12.32 51.04L24.64 53.28L32 64Z" fill="#60A5FA"></path></svg>
                         <h3 class="text-3xl font-bold text-white mb-2">Raydium</h3>
                         <p class="text-gray-400 mb-6 flex-grow">Trade $BUGZILLA on Solana's leading DEX with deep liquidity.</p>
@@ -128,49 +120,47 @@
             </div>
         </section>
 
-        <!-- SEZIONE CANVAS -->
         <section class="relative h-[550px] bg-black flex flex-col justify-center items-center overflow-hidden py-12">
             <div class="w-full max-w-5xl mx-auto flex flex-col items-center gap-8">
                 <canvas id="matrix-canvas" class="w-full h-[400px]"></canvas>
                 <div class="w-full max-w-2xl px-4">
-                    <div class="w-full bg-zinc-800/50 rounded-full h-8 border-2 border-zinc-700 shadow-inner relative overflow-hidden">
+                    <div class="w-full bg-zinc-800 rounded-full h-8 border-2 border-zinc-700 shadow-inner relative overflow-hidden">
                         <div id="progress-bar-inner" class="animated-gradient h-full rounded-full transition-all duration-500 ease-linear" style="width: 0%;"></div>
                         <span id="progress-percentage" class="absolute inset-0 flex items-center justify-center text-lg font-bold text-white drop-shadow-lg">0%</span>
                     </div>
                 </div>
-                <button id="claim-button" disabled class="mt-2 bg-zinc-700 text-zinc-500 font-bold text-xl py-4 px-10 rounded-lg shadow-lg cursor-not-allowed opacity-50 transition-all duration-500 flex items-center gap-3">
+                <button id="claim-button" disabled class="mt-2 bg-zinc-700 text-zinc-500 font-bold text-xl py-4 px-10 rounded-lg shadow-lg cursor-not-allowed transition-all duration-500 flex items-center gap-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
                     <span>CLAIM AIRDROP$</span>
                 </button>
             </div>
         </section>
 
-        <!-- SEZIONE TOKENOMICS (SFONDO NITIDO) -->
         <section class="px-6 max-w-7xl mx-auto py-16">
-          <div class="bg-zinc-900/70 backdrop-blur-sm p-8 md:p-10 rounded-2xl shadow-2xl border border-white/10 relative overflow-hidden">
-            <img src="/assets/bugzilla4.png" alt="Tokenomics Background" class="absolute top-0 left-0 w-full h-full object-cover opacity-10 z-0">
+          <div class="bg-zinc-900 backdrop-blur-sm p-8 md:p-10 rounded-2xl shadow-2xl border border-white/10 relative overflow-hidden">
+            <img src="/assets/bugzilla4.png" alt="Tokenomics Background" class="absolute top-0 left-0 w-full h-full object-cover z-0">
             <div class="relative z-10">
                 <h3 class="text-4xl font-bold text-center text-white mb-10 tracking-wide">Tokenomics</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left text-lg">
-                  <div class="bg-zinc-800/50 p-6 rounded-xl border border-white/10 flex flex-col items-start gap-3">
+                  <div class="bg-zinc-800 p-6 rounded-xl border border-white/10 flex flex-col items-start gap-3">
                     <span class="text-3xl">🌐</span>
                     <p class="text-gray-400 font-semibold">Total Supply</p>
                     <h4 id="total-supply" class="text-2xl font-bold text-green-400">1,000,000,000</h4>
                     <p class="text-sm text-gray-500">The total amount of $BUGZILLA that will ever exist.</p>
                   </div>
-                  <div class="bg-zinc-800/50 p-6 rounded-xl border border-white/10 flex flex-col items-start gap-3">
+                  <div class="bg-zinc-800 p-6 rounded-xl border border-white/10 flex flex-col items-start gap-3">
                     <span class="text-3xl">🔒</span>
                     <p class="text-gray-400 font-semibold">Liquidity</p>
                     <h4 class="text-2xl font-bold text-green-400">100% Locked</h4>
                     <p class="text-sm text-gray-500">Ensures a stable market and prevents rug-pulls by locking the initial pool.</p>
                   </div>
-                  <div class="bg-zinc-800/50 p-6 rounded-xl border border-white/10 flex flex-col items-start gap-3">
+                  <div class="bg-zinc-800 p-6 rounded-xl border border-white/10 flex flex-col items-start gap-3">
                     <span class="text-3xl">🚀</span>
                     <p class="text-gray-400 font-semibold">Transaction Tax</p>
                     <h4 class="text-2xl font-bold text-green-400">0% Buy / 0% Sell</h4>
                     <p class="text-sm text-gray-500">You keep 100% of your tokens when you buy, sell, or trade.</p>
                   </div>
-                  <div class="bg-zinc-800/50 p-6 rounded-xl border border-white/10 flex flex-col items-start gap-3">
+                  <div class="bg-zinc-800 p-6 rounded-xl border border-white/10 flex flex-col items-start gap-3">
                     <span class="text-3xl">👥</span>
                     <p class="text-gray-400 font-semibold">Ownership</p>
                     <h4 class="text-2xl font-bold text-green-400">Renounced</h4>
@@ -181,18 +171,15 @@
           </div>
         </section>
 
-        <!-- SEZIONE NFT MARKETPLACE -->
         <section class="px-6 max-w-7xl mx-auto py-16">
-            <div class="bg-zinc-900/70 backdrop-blur-sm p-8 md:p-12 rounded-2xl shadow-2xl border border-white/10 text-center">
+            <div class="bg-zinc-900 backdrop-blur-sm p-8 md:p-12 rounded-2xl shadow-2xl border border-white/10 text-center">
                 <h2 class="text-5xl font-bold text-white mb-4 tracking-wide">$BUGGAME Minting Station</h2>
                 <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-10">
                     Mint your official $BUGGAME NFT. Each mint grants you a unique, playable asset in the upcoming Bugzilla game.
                 </p>
 
-                <!-- Griglia di Minting con Immagini -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                    <!-- Card di Minting con Immagine e Descrizione -->
-                    <div class="bg-zinc-800/50 rounded-xl border border-zinc-700 flex flex-col text-center overflow-hidden">
+                    <div class="bg-zinc-800 rounded-xl border border-zinc-700 flex flex-col text-center overflow-hidden">
                         <img src="/assets/casella1.png" alt="Random NFT" class="w-full h-40 object-cover">
                         <div class="p-4 flex flex-col flex-grow">
                             <h4 class="text-xl font-bold text-white">Random</h4>
@@ -201,7 +188,7 @@
                             <button class="buy-nft-btn w-full mt-auto bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded-lg" data-rarity="Random" data-price="10">BUY NFT</button>
                         </div>
                     </div>
-                    <div class="bg-zinc-800/50 rounded-xl border border-zinc-700 flex flex-col text-center overflow-hidden">
+                    <div class="bg-zinc-800 rounded-xl border border-zinc-700 flex flex-col text-center overflow-hidden">
                         <img src="/assets/casella2.png" alt="Common NFT" class="w-full h-40 object-cover">
                         <div class="p-4 flex flex-col flex-grow">
                             <h4 class="text-xl font-bold text-white">Common</h4>
@@ -210,7 +197,7 @@
                             <button class="buy-nft-btn w-full mt-auto bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded-lg" data-rarity="Common" data-price="15">BUY NFT</button>
                         </div>
                     </div>
-                    <div class="bg-zinc-800/50 rounded-xl border border-zinc-700 flex flex-col text-center overflow-hidden">
+                    <div class="bg-zinc-800 rounded-xl border border-zinc-700 flex flex-col text-center overflow-hidden">
                         <img src="/assets/casella3.png" alt="Epic NFT" class="w-full h-40 object-cover">
                         <div class="p-4 flex flex-col flex-grow">
                             <h4 class="text-xl font-bold text-blue-400">Epic</h4>
@@ -219,7 +206,7 @@
                             <button class="buy-nft-btn w-full mt-auto bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded-lg" data-rarity="Epic" data-price="25">BUY NFT</button>
                         </div>
                     </div>
-                    <div class="bg-zinc-800/50 rounded-xl border border-zinc-700 flex flex-col text-center overflow-hidden">
+                    <div class="bg-zinc-800 rounded-xl border border-zinc-700 flex flex-col text-center overflow-hidden">
                         <img src="/assets/casella4.png" alt="Legendary NFT" class="w-full h-40 object-cover">
                         <div class="p-4 flex flex-col flex-grow">
                             <h4 class="text-xl font-bold text-purple-400">Legendary</h4>
@@ -230,9 +217,8 @@
                     </div>
                 </div>
                 
-                <!-- Card $BUGGER in evidenza -->
                 <div class="w-full max-w-2xl mx-auto">
-                    <div class="bg-zinc-800/50 rounded-xl border-2 border-yellow-400 flex flex-col md:flex-row text-center md:text-left overflow-hidden shadow-lg shadow-yellow-500/20">
+                    <div class="bg-zinc-800 rounded-xl border-2 border-yellow-400 flex flex-col md:flex-row text-center md:text-left overflow-hidden shadow-lg shadow-yellow-500/20">
                         <img src="/assets/casella5.png" alt="$BUGGER NFT" class="w-full md:w-64 h-auto object-cover">
                         <div class="p-6 flex flex-col flex-grow">
                             <h4 class="text-3xl font-bold text-yellow-400">$BUGGER</h4>
@@ -243,22 +229,20 @@
                     </div>
                 </div>
 
-                <!-- Marketplace Generale con Creazione -->
                 <div class="flex justify-between items-center mb-6 border-t border-zinc-700 pt-10 mt-12">
                     <h4 class="text-2xl font-bold text-white">Community Creations</h4>
                     <button id="create-nft-button" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg shadow-md hover:scale-105 transition-all">
                         Create your NFT
                     </button>
                 </div>
-                <div class="min-h-[200px] bg-zinc-800/50 rounded-lg p-8 flex items-center justify-center">
+                <div class="min-h-[200px] bg-zinc-800 rounded-lg p-8 flex items-center justify-center">
                     <p class="text-gray-500">The marketplace is currently empty. Be the first to create an NFT!</p>
                 </div>
             </div>
         </section>
 
-        <!-- SEZIONE COMMUNITY -->
         <section class="px-6 max-w-7xl mx-auto py-16">
-            <div class="bg-zinc-900/70 backdrop-blur-sm p-8 md:p-12 rounded-2xl shadow-2xl border border-white/10 text-center flex flex-col md:flex-row items-center gap-8">
+            <div class="bg-zinc-900 backdrop-blur-sm p-8 md:p-12 rounded-2xl shadow-2xl border border-white/10 text-center flex flex-col md:flex-row items-center gap-8">
                 <img src="/assets/bugzilla1.png" alt="Community" class="w-48 h-48 rounded-full shadow-lg shadow-purple-500/20 object-cover">
                 <div class="text-center md:text-left">
                     <h3 class="text-4xl font-bold text-white mb-4 tracking-wide">Join The Swarm</h3>
@@ -277,8 +261,7 @@
         </footer>
     </main>
 
-    <!-- MODAL CONNESSIONE WALLET -->
-    <div id="wallet-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center hidden z-50">
+    <div id="wallet-modal" class="fixed inset-0 bg-black backdrop-blur-sm flex items-center justify-center hidden z-50">
         <div class="bg-zinc-800 p-8 rounded-2xl shadow-lg border border-white/10 w-full max-w-xs text-center">
             <h3 class="text-xl font-bold mb-6">Select a Wallet</h3>
             <div class="flex flex-col gap-4">
@@ -289,8 +272,7 @@
         </div>
     </div>
 
-    <!-- MODAL CONFERMA ACQUISTO NFT -->
-    <div id="nft-purchase-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center hidden z-50 p-4">
+    <div id="nft-purchase-modal" class="fixed inset-0 bg-black backdrop-blur-sm flex items-center justify-center hidden z-50 p-4">
         <div class="bg-zinc-900 border border-zinc-700 p-8 rounded-2xl shadow-lg w-full max-w-md text-left relative">
             <button id="close-purchase-modal-btn" class="absolute top-4 right-4 text-gray-400 hover:text-white">&times;</button>
             <h3 class="text-2xl font-bold mb-2 text-white">Confirm Purchase</h3>
@@ -320,8 +302,7 @@
         </div>
     </div>
 
-    <!-- MODAL CREAZIONE NFT -->
-    <div id="nft-creation-modal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center hidden z-50 p-4">
+    <div id="nft-creation-modal" class="fixed inset-0 bg-black backdrop-blur-sm flex items-center justify-center hidden z-50 p-4">
         <div class="bg-zinc-900 border border-zinc-700 p-8 rounded-2xl shadow-lg w-full max-w-md text-left relative">
             <button id="close-nft-modal-btn" class="absolute top-4 right-4 text-gray-400 hover:text-white">&times;</button>
             <h3 class="text-2xl font-bold mb-6 text-white">Create your Bugzilla NFT</h3>
@@ -381,7 +362,6 @@
         </div>
     </div>
 
-    <!-- IL NOSTRO SCRIPT ORA È QUI SOTTO -->
     <script>
         // Attende che la pagina sia completamente caricata prima di eseguire qualsiasi cosa
         window.onload = () => {
@@ -498,7 +478,7 @@
 
             function activateClaimButton() {
                 claimButton.disabled = false;
-                claimButton.classList.remove('bg-zinc-700', 'text-zinc-500', 'cursor-not-allowed', 'opacity-50');
+                claimButton.classList.remove('bg-zinc-700', 'text-zinc-500', 'cursor-not-allowed');
                 claimButton.classList.add('bg-green-500', 'text-white', 'hover:bg-green-400', 'shadow-lg', 'shadow-green-500/50');
                 claimButton.addEventListener('click', () => alert("Airdrop claimed! (Demo)"));
             }
