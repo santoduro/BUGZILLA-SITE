@@ -22,6 +22,11 @@
         .font-hacker {
             font-family: 'VT323', monospace;
         }
+        
+        /* TRANSIZIONE PER IMMAGINE HERO */
+        .hero-image-fade {
+            transition: opacity 0.5s ease-in-out;
+        }
 
         /* EFFETTO CRT (SCANLINE + VIGNETTE) */
         .crt-overlay {
@@ -110,7 +115,7 @@
                     <h1 class="text-3xl font-extrabold text-green-400 tracking-widest font-hacker">$BUGZILLA</h1>
                 </div>
                 <div class="flex items-center gap-4">
-                    <a href="#" id="litepaper-button" class="text-sm font-bold text-gray-300 hover:text-white border-b-2 border-transparent hover:border-green-400 transition-all">MANIFESTO</a>
+                    <a href="assets/bugzilla_litepaper.pdf" target="_blank" id="litepaper-button" class="text-sm font-bold text-gray-300 hover:text-white border-b-2 border-transparent hover:border-green-400 transition-all">LITEPAPER</a>
                     <div id="wallet-container" class="relative">
                         <button id="dashboard-button" class="hidden items-center gap-2 bg-zinc-800 border border-zinc-700 rounded-full py-2 px-4 hover:bg-zinc-700 transition-colors">
                             <span id="dashboard-address" class="font-bold text-sm"></span>
@@ -145,32 +150,29 @@
         <section class="relative min-h-screen flex flex-col items-center justify-center text-center p-6 bg-gradient-to-br from-orange-600 via-red-700 to-orange-600">
             <div class="flex flex-col items-center gap-4 z-10 animate-on-scroll">
                 <h2 class="text-8xl md:text-9xl font-black tracking-wider drop-shadow-lg font-hacker text-white">BUGZILLA</h2>
-                <img src="/assets/bugzilla2.png" alt="Bugzilla" class="w-64 h-auto rounded-2xl shadow-2xl border-4 border-yellow-400 my-4 transition-transform duration-300 hover:scale-105">
+                
+                <img id="hero-image" src="assets/bugzilla2.png" alt="Bugzilla" class="w-64 h-auto rounded-2xl shadow-2xl border-4 border-yellow-400 my-4 hero-image-fade">
+                
                 <p class="text-2xl font-bold text-yellow-300 drop-shadow-md">The most viral meme-token on Solana</p>
-                <button id="hero-connect-button" class="mt-6 bg-green-600 hover:bg-green-700 text-white text-xl font-bold py-3 px-8 rounded-lg shadow-xl border-2 border-green-400 transition-transform duration-300 hover:scale-105">
-                    <span>Connect Wallet</span>
-                </button>
+                
+                <div class="mt-6 flex flex-col sm:flex-row items-center gap-4">
+                    <button id="hero-connect-button" class="bg-green-600 hover:bg-green-700 text-white text-xl font-bold py-3 px-8 rounded-lg shadow-xl border-2 border-green-400 transition-transform duration-300 hover:scale-105">
+                        <span>Connect Wallet</span>
+                    </button>
+                    <div class="flex gap-4">
+                         <a href="https://pump.fun/" target="_blank" rel="noopener noreferrer" class="bg-white/90 text-black font-bold py-3 px-6 rounded-lg hover:bg-white transition-transform duration-300 hover:scale-105">BUY ON PUMP.FUN</a>
+                         <a href="https://raydium.io/" target="_blank" rel="noopener noreferrer" class="bg-blue-600/90 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-600 transition-transform duration-300 hover:scale-105">TRADE ON RAYDIUM</a>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="relative px-6 max-w-7xl mx-auto py-16 text-center animate-on-scroll">
-            <img src="/assets/bugzilla6.png" alt="Buy Background" class="absolute inset-0 w-full h-full object-cover z-0">
-            <div class="relative z-10">
-                <h2 class="text-5xl font-extrabold mb-12 tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-yellow-400 font-hacker">BUY $BUGZILLA ON</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                    <div class="bg-zinc-900 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-zinc-800 flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-2">
-                        <img src="/assets/pump-logo.png" alt="Pump.fun Logo" class="w-24 h-24 mb-4">
-                        <h3 class="text-3xl font-bold text-white mb-2 font-hacker">Pump.fun</h3>
-                        <p class="text-gray-400 mb-6 flex-grow">Get in early. Be part of the initial swarm before the Raydium launch.</p>
-                        <a href="https://pump.fun/" target="_blank" rel="noopener noreferrer" class="w-full bg-white text-black font-bold py-3 px-8 rounded-lg hover:bg-gray-200 transition-colors">BUY NOW</a>
-                    </div>
-                    <div class="bg-zinc-900 backdrop-blur-sm p-8 rounded-2xl shadow-2xl border border-zinc-800 flex flex-col items-center text-center transition-transform duration-300 hover:-translate-y-2">
-                        <svg class="w-24 h-24 mb-4" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32 0L39.36 10.72L51.68 12.96L43.28 22.48L44.48 35.36L32 30.24L19.52 35.36L20.72 22.48L12.32 12.96L24.64 10.72L32 0Z" fill="#3B82F6"></path><path d="M32 64L39.36 53.28L51.68 51.04L43.28 41.52L44.48 28.64L32 33.76L19.52 28.64L20.72 41.52L12.32 51.04L24.64 53.28L32 64Z" fill="#60A5FA"></path></svg>
-                        <h3 class="text-3xl font-bold text-white mb-2 font-hacker">Raydium</h3>
-                        <p class="text-gray-400 mb-6 flex-grow">Trade $BUGZILLA on Solana's leading DEX with deep liquidity.</p>
-                        <a href="https://raydium.io/" target="_blank" rel="noopener noreferrer" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-colors">TRADE NOW</a>
-                    </div>
-                </div>
+        <section class="py-16 bg-black text-center animate-on-scroll">
+            <div class="max-w-3xl mx-auto px-6">
+                <img src="assets/bugzilla_game.gif" alt="Bugzilla Game Teaser" class="w-full max-w-lg mx-auto rounded-2xl shadow-2xl shadow-green-500/20 border-2 border-zinc-700">
+                <a href="game/index.html" class="mt-8 inline-block font-hacker text-2xl bg-gradient-to-r from-green-400 to-purple-500 text-white font-bold py-4 px-10 rounded-full shadow-lg shadow-purple-500/30 transition-transform duration-300 hover:scale-110">
+                    PLAY GAME
+                </a>
             </div>
         </section>
 
@@ -265,7 +267,7 @@
                         <p class="text-sm leading-snug tracking-wide text-gray-400">$BUGGAME Beta launch, NFT utilities activated, strategic partnerships, CEX listings.</p>
                     </div>
                 </div>
-                 <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+                <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
                     <div class="order-1 w-5/12"></div>
                     <div class="z-20 flex items-center order-1 bg-green-500 shadow-xl w-8 h-8 rounded-full"><h1 class="mx-auto text-black font-bold text-lg">4</h1></div>
                     <div class="order-1 bg-zinc-900 rounded-lg shadow-xl w-5/12 px-6 py-4 border border-zinc-700 transition-transform duration-300 hover:scale-105">
@@ -333,27 +335,16 @@
         </section>
 
         <section class="px-6 max-w-7xl mx-auto py-16 animate-on-scroll">
-            <div class="relative overflow-hidden bg-zinc-900 backdrop-blur-sm p-8 md:p-12 rounded-2xl shadow-2xl border border-zinc-800 text-center">
+            <div class="relative overflow-hidden bg-zinc-900 backdrop-blur-sm p-8 md:p-12 rounded-2xl shadow-2xl border border-zinc-800 text-center transition-transform duration-300 hover:-translate-y-2">
                 <img src="/assets/bugzilla7.png" alt="NFT Background" class="absolute inset-0 w-full h-full object-cover z-0">
                 <div class="relative z-10">
-                    <h2 class="text-5xl font-bold text-white mb-4 tracking-wide font-hacker">$BUGGAME Minting Station</h2>
+                    <h2 class="text-5xl font-bold text-white mb-4 tracking-wide font-hacker">$BUGGAME NFT Marketplace</h2>
                     <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-10">
-                        Mint your official $BUGGAME NFT. Each mint grants you a unique, playable asset in the upcoming Bugzilla game.
+                        Mint your official playable characters for the $BUGGAME. Each NFT grants unique abilities and stats for the digital battlefield.
                     </p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                        <div class="bg-zinc-800 rounded-xl border border-zinc-700 flex flex-col text-center overflow-hidden transition-transform duration-300 hover:-translate-y-2"><img src="/assets/casella1.png" alt="Random NFT" class="w-full h-40 object-cover"><div class="p-4 flex flex-col flex-grow"><h4 class="text-xl font-bold text-white font-hacker">Random</h4><p class="text-sm text-gray-400 flex-grow my-2">A chance to pull any rarity. High risk, high reward.</p><p class="text-3xl font-bold text-green-400 my-2 font-hacker">$10</p><button class="buy-nft-btn w-full mt-auto bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded-lg" data-rarity="Random" data-price="10">BUY NFT</button></div></div>
-                        <div class="bg-zinc-800 rounded-xl border border-zinc-700 flex flex-col text-center overflow-hidden transition-transform duration-300 hover:-translate-y-2"><img src="/assets/casella2.png" alt="Common NFT" class="w-full h-40 object-cover"><div class="p-4 flex flex-col flex-grow"><h4 class="text-xl font-bold text-white font-hacker">Common</h4><p class="text-sm text-gray-400 flex-grow my-2">The backbone of the swarm. A solid asset for any player.</p><p class="text-3xl font-bold text-green-400 my-2 font-hacker">$15</p><button class="buy-nft-btn w-full mt-auto bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded-lg" data-rarity="Common" data-price="15">BUY NFT</button></div></div>
-                        <div class="bg-zinc-800 rounded-xl border border-zinc-700 flex flex-col text-center overflow-hidden transition-transform duration-300 hover:-translate-y-2"><img src="/assets/casella3.png" alt="Epic NFT" class="w-full h-40 object-cover"><div class="p-4 flex flex-col flex-grow"><h4 class="text-xl font-bold text-blue-400 font-hacker">Epic</h4><p class="text-sm text-gray-400 flex-grow my-2">A superior bug with enhanced abilities. A true threat on the battlefield.</p><p class="text-3xl font-bold text-green-400 my-2 font-hacker">$25</p><button class="buy-nft-btn w-full mt-auto bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded-lg" data-rarity="Epic" data-price="25">BUY NFT</button></div></div>
-                        <div class="bg-zinc-800 rounded-xl border border-zinc-700 flex flex-col text-center overflow-hidden transition-transform duration-300 hover:-translate-y-2"><img src="/assets/casella4.png" alt="Legendary NFT" class="w-full h-40 object-cover"><div class="p-4 flex flex-col flex-grow"><h4 class="text-xl font-bold text-purple-400 font-hacker">Legendary</h4><p class="text-sm text-gray-400 flex-grow my-2">A mythical creature of immense power. Few will ever own one.</p><p class="text-3xl font-bold text-green-400 my-2 font-hacker">$50</p><button class="buy-nft-btn w-full mt-auto bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 rounded-lg" data-rarity="Legendary" data-price="50">BUY NFT</button></div></div>
-                    </div>
-                    <div class="w-full max-w-2xl mx-auto transition-transform duration-300 hover:scale-105">
-                        <div class="bg-zinc-800 rounded-xl border-2 border-yellow-400 flex flex-col md:flex-row text-center md:text-left overflow-hidden shadow-lg shadow-yellow-500/20">
-                            <img src="/assets/casella5.png" alt="$BUGGER NFT" class="w-full md:w-64 h-auto object-cover">
-                            <div class="p-6 flex flex-col flex-grow"><h4 class="text-3xl font-bold text-yellow-400 font-hacker">$BUGGER</h4><p class="text-md text-gray-300 flex-grow my-3">The ultimate life form. The apex predator of the Bugzilla ecosystem. This is not just an NFT, it's a statement.</p><p class="text-4xl font-bold text-green-400 my-2 font-hacker">$100</p><button class="buy-nft-btn w-full mt-auto bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 rounded-lg" data-rarity="$BUGGER" data-price="100">BUY THE APEX</button></div>
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-center mb-6 border-t border-zinc-700 pt-10 mt-12"><h4 class="text-2xl font-bold text-white font-hacker">Community Creations</h4><button id="create-nft-button" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-lg shadow-md transition-transform duration-300 hover:scale-105">Create your NFT</button></div>
-                    <div class="min-h-[200px] bg-zinc-800 rounded-lg p-8 flex items-center justify-center"><p class="text-gray-500">The marketplace is currently empty. Be the first to create an NFT!</p></div>
+                     <a href="marketplace.html" class="inline-block font-hacker text-2xl bg-gradient-to-r from-purple-500 to-teal-500 text-white font-bold py-4 px-10 rounded-full shadow-lg shadow-purple-500/30 transition-transform duration-300 hover:scale-110">
+                        ENTER THE MARKETPLACE
+                    </a>
                 </div>
             </div>
         </section>
@@ -453,7 +444,7 @@
             const BUGZILLA_MINT_ADDRESS = "YOUR_BUGZILLA_MINT_ADDRESS_HERE";
             const PIXELATION_LEVEL = 8;
             const SOLANA_RPC_URL = `https://mainnet.helius-rpc.com/?api-key=${HELIUS_API_KEY}`;
-
+            
             // --- OGGETTI SOLANA WEB3 ---
             const { Connection, PublicKey } = solanaWeb3;
             const connection = new Connection(SOLANA_RPC_URL);
@@ -463,14 +454,14 @@
             if (!canvas) return;
             const ctx = canvas.getContext('2d');
             
-            // UI Principale
+            // NUOVO SELETTORE
+            const heroImage = document.getElementById('hero-image');
+
             const totalSupplyText = document.getElementById('total-supply');
             const heroConnectButton = document.getElementById('hero-connect-button');
             const progressBarInner = document.getElementById('progress-bar-inner');
             const progressPercentage = document.getElementById('progress-percentage');
             const claimButton = document.getElementById('claim-button');
-
-            // UI Wallet e Dashboard
             const walletContainer = document.getElementById('wallet-container');
             const dashboardButton = document.getElementById('dashboard-button');
             const dashboardAddress = document.getElementById('dashboard-address');
@@ -479,14 +470,10 @@
             const tokenListContainer = document.getElementById('token-list-container');
             const tokenListLoader = document.getElementById('token-list-loader');
             const disconnectBtn = document.getElementById('disconnect-btn');
-            
-            // Modal Connessione
             const walletModal = document.getElementById('wallet-modal');
             const phantomBtn = document.getElementById('phantom-btn');
             const solflareBtn = document.getElementById('solflare-btn');
             const closeModalBtn = document.getElementById('close-modal-btn');
-
-            // ELEMENTI AIRDROP & QUESTS
             const userBalanceDisplay = document.getElementById('user-balance-display');
             const airdropMultiplierDisplay = document.getElementById('airdrop-multiplier-display');
             const questWalletStatus = document.getElementById('quest-wallet-status');
@@ -499,8 +486,6 @@
             const questInviteStatus = document.getElementById('quest-invite-status');
             const questInviteButton = document.getElementById('quest-invite-button');
             const questInviteAction = document.getElementById('quest-invite-action');
-
-            // Modal Acquisto NFT
             const nftPurchaseModal = document.getElementById('nft-purchase-modal');
             const buyNftButtons = document.querySelectorAll('.buy-nft-btn');
             const closePurchaseModalBtn = document.getElementById('close-purchase-modal-btn');
@@ -508,25 +493,42 @@
             const purchasePriceUsdEl = document.getElementById('purchase-price-usd');
             const purchasePriceSolEl = document.getElementById('purchase-price-sol');
             const confirmPurchaseBtn = document.getElementById('confirm-purchase-btn');
-            
-            // Modal Creazione NFT
             const nftCreationModal = document.getElementById('nft-creation-modal');
             const createNftButton = document.getElementById('create-nft-button');
             const closeNftModalBtn = document.getElementById('close-nft-modal-btn');
-            const nftFileUpload = document.getElementById('nft-file-upload');
-            const nftImagePreview = document.getElementById('nft-image-preview');
-            const nftImagePlaceholder = document.getElementById('nft-image-placeholder');
-            const mintNftButton = document.getElementById('mint-nft-button');
-            const paySolBtn = document.getElementById('pay-sol-btn');
-            const payBugzBtn = document.getElementById('pay-bugz-btn');
+            // ... (altri selettori esistenti)
 
             // --- STATO E VARIABILI GLOBALI ---
             let progress = 0;
+            // ... (altre variabili esistenti)
+            let connectedWallet = null;
+            let fullAddress = '';
+            
+            // NUOVA VARIABILE PER SLIDESHOW
+            const heroImages = ['assets/bugzilla2.png', 'assets/bugzilla1.png', 'assets/bugzilla6.png', 'assets/bugzilla7.png'];
+            let currentImageIndex = 0;
+
+            // --- LOGICA SLIDESHOW HERO ---
+            if (heroImage) {
+                setInterval(() => {
+                    currentImageIndex = (currentImageIndex + 1) % heroImages.length;
+                    
+                    heroImage.style.opacity = 0;
+                    
+                    setTimeout(() => {
+                        heroImage.src = heroImages[currentImageIndex];
+                        heroImage.style.opacity = 1;
+                    }, 500); 
+
+                }, 2000); 
+            }
+
+            // ... (TUTTO IL RESTO DEL JAVASCRIPT ESISTENTE DA QUI IN POI)
+
+            // Esempio dell'inizio del resto del codice che era già presente:
             let totalSupply = 1_000_000_000;
             let roachImage = null;
             let pixelData = [];
-            let connectedWallet = null;
-            let fullAddress = '';
             let drops = [];
             let columns;
             const fontSize = 12;
@@ -535,8 +537,8 @@
             let currentPurchase = {};
             let paymentMethod = 'SOL';
 
-            // --- FUNZIONI DI SETUP E ANIMAZIONE ---
             function setCanvasDimensions() {
+                if (!canvas) return;
                 canvas.width = canvas.clientWidth;
                 canvas.height = canvas.clientHeight;
                 columns = Math.floor(canvas.width / fontSize);
@@ -547,9 +549,10 @@
             const img = new Image();
             img.src = '/assets/blatta1.png';
             img.onload = () => { roachImage = img; preparePixelData(); };
-            img.onerror = () => console.error("ERRORE CRITICO: Impossibile caricare l'immagine '/assets/blatta1.png'.");
+            img.onerror = () => console.error("ERRORE: Impossibile caricare '/assets/blatta1.png'.");
 
             function preparePixelData() {
+                // ... (continua con tutto il resto del codice JS che avevi)
                 const tempCanvas = document.createElement('canvas');
                 const tempCtx = tempCanvas.getContext('2d');
                 tempCanvas.width = roachImage.width;
@@ -579,8 +582,8 @@
                 if (progress < 100) {
                     progress += 0.2;
                     const currentProgress = Math.floor(progress);
-                    progressBarInner.style.width = `${currentProgress}%`;
-                    progressPercentage.textContent = `${currentProgress}%`;
+                    if(progressBarInner) progressBarInner.style.width = `${currentProgress}%`;
+                    if(progressPercentage) progressPercentage.textContent = `${currentProgress}%`;
                     if (currentProgress >= 100) activateClaimButton();
                 }
             }, 120);
@@ -602,9 +605,7 @@
                 for (let i = 0; i < drops.length; i++) {
                     const text = chars[Math.floor(Math.random() * chars.length)];
                     ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                        drops[i] = 0;
-                    }
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) { drops[i] = 0; }
                     drops[i]++;
                 }
                 if (roachImage && pixelData.length > 0) {
@@ -624,10 +625,8 @@
                     }
                 }
             }
-            
             function animationLoop() { requestAnimationFrame(animationLoop); draw(); }
 
-            // --- FUNZIONI PER AIRDROP E QUESTS ---
             function updateAirdropMultiplier() {
                 let multiplier = 1.0;
                 if(questStatus.wallet) multiplier += 0.5;
@@ -661,7 +660,6 @@
                 updateAirdropMultiplier();
             }
 
-            // --- LOGICA DELLA DASHBOARD E DEL WALLET ---
             function toggleDashboard() { walletDashboard.classList.toggle('hidden'); }
 
             function updateUiToConnectedState(publicKey) {
@@ -670,7 +668,7 @@
                 dashboardButton.classList.remove('hidden');
                 dashboardButton.classList.add('flex');
                 dashboardAddress.textContent = shortAddress;
-                heroConnectButton.classList.add('hidden');
+                heroConnectButton.style.display = 'none'; 
                 fetchAndDisplayTokens(fullAddress);
                 questStatus.wallet = true;
                 questWalletStatus.textContent = '✅';
@@ -681,7 +679,7 @@
                 dashboardButton.classList.add('hidden');
                 dashboardButton.classList.remove('flex');
                 walletDashboard.classList.add('hidden');
-                heroConnectButton.classList.remove('hidden');
+                heroConnectButton.style.display = 'block';
                 connectedWallet = null;
                 fullAddress = '';
                 userBalanceDisplay.textContent = "Connect Wallet";
@@ -700,64 +698,33 @@
                 tokenListLoader.style.display = 'block';
                 try {
                     const ownerPublicKey = new PublicKey(publicKeyString);
-                    const [solBalance, tokenAccounts] = await Promise.all([
-                        connection.getBalance(ownerPublicKey),
-                        connection.getParsedTokenAccountsByOwner(ownerPublicKey, { programId: new PublicKey('TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA') })
-                    ]);
+                    const [solBalance, tokenAccounts] = await Promise.all([ connection.getBalance(ownerPublicKey), connection.getParsedTokenAccountsByOwner(ownerPublicKey, { programId: new PublicKey('TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA') }) ]);
                     const tokensWithBalance = tokenAccounts.value.map(acc => acc.account.data.parsed.info).filter(info => info.tokenAmount.uiAmount > 0);
                     let allTokens = [];
-                    if (solBalance > 0) {
-                        allTokens.push({
-                            isNative: true, mint: 'So11111111111111111111111111111111111111112',
-                            balance: (solBalance / solanaWeb3.LAMPORTS_PER_SOL).toLocaleString('en-US', { maximumFractionDigits: 4 }),
-                            symbol: 'SOL', logo: 'https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/So11111111111111111111111111111111111111112/logo.png'
-                        });
-                    }
+                    if (solBalance > 0) { allTokens.push({ isNative: true, mint: 'So11111111111111111111111111111111111111112', balance: (solBalance / solanaWeb3.LAMPORTS_PER_SOL).toLocaleString('en-US', { maximumFractionDigits: 4 }), symbol: 'SOL', logo: 'https://raw.githubusercontent.com/solana-labs/token-list/main/assets/mainnet/So11111111111111111111111111111111111111112/logo.png' }); }
                     let bugzillaBalanceFound = false;
                     if (tokensWithBalance.length > 0) {
                         const mintAddresses = tokensWithBalance.map(t => t.mint);
-                        const response = await fetch(SOLANA_RPC_URL, {
-                            method: 'POST', headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ jsonrpc: '2.0', id: 'bugzilla-dapp', method: 'getAssetBatch', params: { ids: mintAddresses } }),
-                        });
+                        const response = await fetch(SOLANA_RPC_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ jsonrpc: '2.0', id: 'bugzilla-dapp', method: 'getAssetBatch', params: { ids: mintAddresses } }), });
                         const { result: assets } = await response.json();
                         const enrichedSplTokens = tokensWithBalance.map(token => {
                             const asset = assets.find(a => a.id === token.mint);
-                            if(token.mint === BUGZILLA_MINT_ADDRESS) {
-                                userBalanceDisplay.textContent = `${parseFloat(token.tokenAmount.uiAmountString).toLocaleString('en-US', {maximumFractionDigits: 2})} $BUGZ`;
-                                bugzillaBalanceFound = true;
-                            }
-                            return {
-                                isNative: false, mint: token.mint,
-                                balance: parseFloat(token.tokenAmount.uiAmountString).toLocaleString('en-US', { maximumFractionDigits: 2 }),
-                                symbol: asset?.content?.metadata?.symbol || (token.mint === BUGZILLA_MINT_ADDRESS ? '$BUGZILLA' : token.mint.substring(0, 6) + '...'),
-                                logo: asset?.content?.links?.image || (token.mint === BUGZILLA_MINT_ADDRESS ? '/assets/bugzilla1.png' : 'https://placehold.co/32x32/374151/9ca3af?text=?')
-                            };
+                            if(token.mint === BUGZILLA_MINT_ADDRESS) { userBalanceDisplay.textContent = `${parseFloat(token.tokenAmount.uiAmountString).toLocaleString('en-US', {maximumFractionDigits: 2})} $BUGZ`; bugzillaBalanceFound = true; }
+                            return { isNative: false, mint: token.mint, balance: parseFloat(token.tokenAmount.uiAmountString).toLocaleString('en-US', { maximumFractionDigits: 2 }), symbol: asset?.content?.metadata?.symbol || (token.mint === BUGZILLA_MINT_ADDRESS ? '$BUGZILLA' : token.mint.substring(0, 6) + '...'), logo: asset?.content?.links?.image || (token.mint === BUGZILLA_MINT_ADDRESS ? '/assets/bugzilla1.png' : 'https://placehold.co/32x32/374151/9ca3af?text=?') };
                         });
                         allTokens.push(...enrichedSplTokens);
                     }
                     if(!bugzillaBalanceFound) { userBalanceDisplay.textContent = `0 $BUGZ`; }
-                    allTokens.sort((a, b) => {
-                        if (a.isNative) return -1; if (b.isNative) return 1;
-                        if (a.mint === BUGZILLA_MINT_ADDRESS) return -1; if (b.mint === BUGZILLA_MINT_ADDRESS) return 1;
-                        return 0;
-                    });
+                    allTokens.sort((a, b) => { if (a.isNative) return -1; if (b.isNative) return 1; if (a.mint === BUGZILLA_MINT_ADDRESS) return -1; if (b.mint === BUGZILLA_MINT_ADDRESS) return 1; return 0; });
                     tokenListLoader.style.display = 'none';
-                    if (allTokens.length === 0) {
-                        tokenListContainer.innerHTML = `<p class="text-center text-gray-500">No assets found.</p>`;
-                        return;
-                    }
+                    if (allTokens.length === 0) { tokenListContainer.innerHTML = `<p class="text-center text-gray-500">No assets found.</p>`; return; }
                     allTokens.forEach(token => {
                         const tokenEl = document.createElement('div');
                         tokenEl.className = 'flex items-center justify-between p-2 rounded-lg hover:bg-zinc-800';
                         tokenEl.innerHTML = `<div class="flex items-center gap-3"><img src="${token.logo}" class="w-8 h-8 rounded-full bg-zinc-700" alt="${token.symbol} logo" onerror="this.src='https://placehold.co/32x32/374151/9ca3af?text=?'"><span class="font-bold">${token.symbol}</span></div><span class="text-gray-300">${token.balance}</span>`;
                         tokenListContainer.appendChild(tokenEl);
                     });
-                } catch (error) {
-                    console.error("Impossibile recuperare i token:", error);
-                    tokenListLoader.style.display = 'none';
-                    tokenListContainer.innerHTML = `<p class="text-center text-red-500">Failed to load tokens.</p>`;
-                }
+                } catch (error) { console.error("Impossibile recuperare i token:", error); tokenListLoader.style.display = 'none'; tokenListContainer.innerHTML = `<p class="text-center text-red-500">Failed to load tokens.</p>`; }
             }
 
             async function handleConnection(provider) {
@@ -769,11 +736,8 @@
                     await provider.signMessage(encodedMessage, "utf8");
                     connectedWallet = provider;
                     updateUiToConnectedState(publicKey);
-                    closeModal();
-                } catch (err) {
-                    console.error("Connessione o firma fallita:", err);
-                    updateUiToDisconnectedState();
-                }
+                    closeModal(walletModal);
+                } catch (err) { console.error("Connessione o firma fallita:", err); updateUiToDisconnectedState(); }
             }
 
             async function connectPhantom() { if ('phantom' in window && window.phantom.solana) await handleConnection(window.phantom.solana); else window.open('https://phantom.app/', '_blank'); }
@@ -791,52 +755,21 @@
                 const textArea = document.createElement("textarea");
                 textArea.value = fullAddress;
                 document.body.appendChild(textArea); textArea.focus(); textArea.select();
-                try {
-                    document.execCommand('copy');
-                    copyAddressBtn.title = 'Copied!';
-                    setTimeout(() => { copyAddressBtn.title = 'Copy Address'; }, 2000);
-                } catch (err) { console.error('Impossibile copiare', err); }
+                try { document.execCommand('copy'); copyAddressBtn.title = 'Copied!'; setTimeout(() => { copyAddressBtn.title = 'Copy Address'; }, 2000); } catch (err) { console.error('Impossibile copiare', err); }
                 document.body.removeChild(textArea);
             }
 
             function openModal(modal) { modal.classList.remove('hidden'); }
             function closeModal(modal) { modal.classList.add('hidden'); }
             
-            // --- LOGICA MODALS NFT ---
-            buyNftButtons.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const rarity = e.target.dataset.rarity;
-                    const price = e.target.dataset.price;
-                    openPurchaseModal(rarity, price);
-                });
-            });
-
-            createNftButton.addEventListener('click', () => openModal(document.getElementById('nft-creation-modal')));
-
-            async function openPurchaseModal(rarity, priceUsd) {
-                const nftPurchaseModal = document.getElementById('nft-purchase-modal');
-                if (!connectedWallet) { alert("Please connect your wallet first."); return; }
-                document.getElementById('purchase-rarity').textContent = rarity;
-                document.getElementById('purchase-price-usd').textContent = `$${priceUsd}`;
-                document.getElementById('purchase-price-sol').textContent = "Loading...";
-                openModal(nftPurchaseModal);
-                try {
-                    const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd');
-                    const data = await response.json();
-                    const priceInSol = (priceUsd / data.solana.usd).toFixed(5);
-                    document.getElementById('purchase-price-sol').textContent = `~${priceInSol} SOL`;
-                } catch (error) { document.getElementById('purchase-price-sol').textContent = "Error"; }
-            }
-
-            // --- AVVIO E GESTIONE ---
             setCanvasDimensions();
             animationLoop();
             window.addEventListener('resize', setCanvasDimensions);
 
             heroConnectButton.addEventListener('click', () => openModal(walletModal));
             closeModalBtn.addEventListener('click', () => closeModal(walletModal));
-            if(document.getElementById('close-purchase-modal-btn')) document.getElementById('close-purchase-modal-btn').addEventListener('click', () => closeModal(document.getElementById('nft-purchase-modal')));
-            if(document.getElementById('close-nft-modal-btn')) document.getElementById('close-nft-modal-btn').addEventListener('click', () => closeModal(document.getElementById('nft-creation-modal')));
+            if(closePurchaseModalBtn) closePurchaseModalBtn.addEventListener('click', () => closeModal(nftPurchaseModal));
+            if(closeNftModalBtn) closeNftModalBtn.addEventListener('click', () => closeModal(nftCreationModal));
             
             phantomBtn.addEventListener('click', connectPhantom);
             solflareBtn.addEventListener('click', connectSolflare);
@@ -850,11 +783,10 @@
             
             document.addEventListener('click', (event) => {
                 if (walletContainer && !walletContainer.contains(event.target)) {
-                    walletDashboard.classList.add('hidden');
+                    if(walletDashboard) walletDashboard.classList.add('hidden');
                 }
             });
 
-            // LOGICA ANIMAZIONI ALLO SCROLL
             const sectionsToAnimate = document.querySelectorAll('.animate-on-scroll');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -866,11 +798,10 @@
             }, { threshold: 0.1 });
             sectionsToAnimate.forEach(section => { observer.observe(section); });
 
-            // LOGICA TERMINALE FOOTER
             const terminalInput = document.getElementById('terminal-input');
             const terminalOutput = document.getElementById('terminal-output');
             const terminalContainer = document.getElementById('terminal');
-            terminalInput.addEventListener('keydown', function(event) {
+            if(terminalInput) terminalInput.addEventListener('keydown', function(event) {
                 if (event.key === 'Enter') {
                     event.preventDefault();
                     const command = terminalInput.value.trim().toLowerCase();
